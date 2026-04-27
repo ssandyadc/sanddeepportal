@@ -8,12 +8,12 @@ const serviceCategories = [
   {
     id: 'basic',
     badge: 'Foundation',
-    badgeColor: 'bg-blue-100 text-[#1a3a8f]',
+    badgeColor: 'bg-blue-100 text-blue-700',
     title: 'Basic Registration Services',
     subtitle: 'Everything you need to get started on GeM Portal',
-    headerColor: 'from-[#1a3a8f] to-[#2563eb]',
+    headerColor: 'from-blue-700 to-blue-600',
     borderColor: 'border-blue-200',
-    accentColor: 'text-[#1a3a8f]',
+    accentColor: 'text-blue-600',
     services: [
       { name: 'GeM Seller Registration', desc: 'Complete account creation on the GeM Portal with all required verifications.' },
       { name: 'Brand Approval Support', desc: 'Assistance with brand registration and approval process on GeM.' },
@@ -24,12 +24,12 @@ const serviceCategories = [
   {
     id: 'catalog',
     badge: 'Visibility',
-    badgeColor: 'bg-green-100 text-[#2a7a2a]',
+    badgeColor: 'bg-green-100 text-green-700',
     title: 'Catalog Services',
     subtitle: 'Get found by government buyers with optimized listings',
-    headerColor: 'from-[#2a7a2a] to-[#3a9a3a]',
+    headerColor: 'from-green-700 to-green-600',
     borderColor: 'border-green-200',
-    accentColor: 'text-[#2a7a2a]',
+    accentColor: 'text-green-600',
     services: [
       { name: 'Product Listing', desc: 'Professional creation of product listings with correct specifications and images.' },
       { name: 'Catalog Optimization', desc: 'Optimization of existing catalog for better visibility and search ranking.' },
@@ -40,12 +40,12 @@ const serviceCategories = [
   {
     id: 'compliance',
     badge: 'Compliance',
-    badgeColor: 'bg-amber-100 text-amber-800',
+    badgeColor: 'bg-amber-100 text-amber-700',
     title: 'Compliance Support',
     subtitle: 'All documents and certificates handled professionally',
-    headerColor: 'from-[#d97706] to-[#f59e0b]',
+    headerColor: 'from-amber-600 to-amber-500',
     borderColor: 'border-amber-200',
-    accentColor: 'text-[#d97706]',
+    accentColor: 'text-amber-600',
     services: [
       { name: 'Document Preparation', desc: 'Preparation and verification of all mandatory documents for GeM compliance.' },
       { name: 'Authorization Setup', desc: 'Setup of required authorizations from OEMs and principals.' },
@@ -56,12 +56,12 @@ const serviceCategories = [
   {
     id: 'bid',
     badge: 'Revenue',
-    badgeColor: 'bg-orange-100 text-orange-700',
+    badgeColor: 'bg-red-100 text-red-700',
     title: 'Bid Support',
     subtitle: 'Win government contracts with expert bidding strategy',
-    headerColor: 'from-[#ea580c] to-[#f97316]',
-    borderColor: 'border-orange-200',
-    accentColor: 'text-[#ea580c]',
+    headerColor: 'from-red-700 to-red-600',
+    borderColor: 'border-red-200',
+    accentColor: 'text-red-600',
     services: [
       { name: 'Bid Participation Training', desc: 'Hands-on training for participating in GeM bids and tenders effectively.' },
       { name: 'Bid Search Assistance', desc: 'Daily search and alert setup for relevant bids matching your products/services.' },
@@ -72,12 +72,12 @@ const serviceCategories = [
   {
     id: 'growth',
     badge: 'Growth',
-    badgeColor: 'bg-sky-100 text-sky-700',
+    badgeColor: 'bg-teal-100 text-teal-700',
     title: 'Growth Support',
     subtitle: 'Scale your GeM business and improve your seller performance',
-    headerColor: 'from-[#0369a1] to-[#0284c7]',
-    borderColor: 'border-sky-200',
-    accentColor: 'text-[#0369a1]',
+    headerColor: 'from-teal-700 to-teal-600',
+    borderColor: 'border-teal-200',
+    accentColor: 'text-teal-600',
     services: [
       { name: 'Order Execution Guidance', desc: 'Support in executing orders correctly including delivery and invoice submission.' },
       { name: 'Payment Tracking Help', desc: 'Assistance in tracking pending payments and resolving delay issues.' },
@@ -88,12 +88,12 @@ const serviceCategories = [
   {
     id: 'advanced',
     badge: 'Premium',
-    badgeColor: 'bg-gray-100 text-gray-700',
+    badgeColor: 'bg-purple-100 text-purple-700',
     title: 'Advanced Services',
     subtitle: 'High-value solutions for complex GeM challenges',
-    headerColor: 'from-[#0d1f4f] to-[#1a3a8f]',
+    headerColor: 'from-gray-800 to-gray-700',
     borderColor: 'border-gray-200',
-    accentColor: 'text-[#1a3a8f]',
+    accentColor: 'text-gray-700',
     services: [
       { name: 'Vendor Assessment Completion', desc: 'Full management of vendor assessment process for higher certification levels.' },
       { name: 'OEM Approval Fast-Track Support', desc: 'Expedited assistance for getting OEM status approved on GeM.' },
@@ -113,7 +113,7 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#0d1f4f] via-[#1a3a8f] to-[#1a5fa8] text-white pt-28 pb-16">
+      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white pt-28 pb-16">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <span className="inline-block bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium text-blue-200 mb-4">
             Complete GeM Support
@@ -127,7 +127,7 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
           <div className="flex flex-wrap justify-center gap-4">
             <button
               onClick={() => handleNav('contact')}
-              className="bg-[#f59e0b] hover:bg-[#d97706] text-[#0d1f4f] font-black px-6 py-3 rounded-xl flex items-center gap-2 transition-colors"
+              className="bg-amber-400 hover:bg-amber-300 text-blue-900 font-black px-6 py-3 rounded-xl flex items-center gap-2 transition-colors"
             >
               Get a Free Consultation <ArrowRight size={16} />
             </button>
@@ -135,7 +135,7 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
               href="https://wa.me/919100011053?text=Hi%2C%20I%20want%20to%20know%20about%20GeM%20services"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#2a7a2a] hover:bg-[#1f5c1f] text-white font-bold px-6 py-3 rounded-xl flex items-center gap-2 transition-colors"
+              className="bg-green-500 hover:bg-green-400 text-white font-bold px-6 py-3 rounded-xl flex items-center gap-2 transition-colors"
             >
               <MessageCircle size={16} /> WhatsApp Us
             </a>
@@ -172,7 +172,7 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
                     <div key={service.name} className="flex gap-3">
                       <CheckCircle size={18} className={`${cat.accentColor} shrink-0 mt-0.5`} />
                       <div>
-                        <p className="font-semibold text-[#0d1f4f] text-sm">{service.name}</p>
+                        <p className="font-semibold text-gray-800 text-sm">{service.name}</p>
                         <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{service.desc}</p>
                       </div>
                     </div>
@@ -188,18 +188,18 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-2xl md:text-3xl font-black text-[#0d1f4f]">Why Choose GemPro5IT?</h2>
+            <h2 className="text-2xl md:text-3xl font-black text-gray-900">Why Choose GemPro5IT?</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
-              { value: '500+', label: 'Sellers Helped', sub: 'Across India', color: 'text-[#1a3a8f]' },
-              { value: '30', label: 'Days Promise', sub: 'Reg to First Order', color: 'text-[#f59e0b]' },
-              { value: '95%', label: 'Success Rate', sub: 'Client Satisfaction', color: 'text-[#2a7a2a]' },
-              { value: '24/7', label: 'Support', sub: 'WhatsApp & Call', color: 'text-[#f97316]' },
+              { value: '500+', label: 'Sellers Helped', sub: 'Across India' },
+              { value: '30', label: 'Days Promise', sub: 'Reg to First Order' },
+              { value: '95%', label: 'Success Rate', sub: 'Client Satisfaction' },
+              { value: '24/7', label: 'Support', sub: 'WhatsApp & Call' },
             ].map((stat) => (
               <div key={stat.label} className="text-center border border-gray-100 rounded-2xl p-5 bg-gray-50">
-                <p className={`text-3xl font-black ${stat.color}`}>{stat.value}</p>
-                <p className="font-bold text-[#0d1f4f] text-sm mt-1">{stat.label}</p>
+                <p className="text-3xl font-black text-blue-700">{stat.value}</p>
+                <p className="font-bold text-gray-800 text-sm mt-1">{stat.label}</p>
                 <p className="text-xs text-gray-400">{stat.sub}</p>
               </div>
             ))}
@@ -208,14 +208,14 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
       </section>
 
       {/* CTA */}
-      <section className="py-14 bg-gradient-to-r from-[#0d1f4f] to-[#1a3a8f] text-white">
+      <section className="py-14 bg-gradient-to-r from-blue-900 to-blue-800 text-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-black mb-3">Not Sure Which Service You Need?</h2>
           <p className="text-blue-200 mb-6">Book a free 15-minute consultation and our experts will guide you.</p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
               href="tel:9100011053"
-              className="bg-white text-[#1a3a8f] font-black px-6 py-3 rounded-xl flex items-center gap-2 hover:bg-blue-50 transition-colors"
+              className="bg-white text-blue-800 font-black px-6 py-3 rounded-xl flex items-center gap-2 hover:bg-blue-50 transition-colors"
             >
               <Phone size={16} /> Call: 9100011053
             </a>
@@ -223,7 +223,7 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
               href="https://wa.me/919100011053?text=Hi%2C%20I%20need%20help%20choosing%20the%20right%20GeM%20service"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#2a7a2a] hover:bg-[#1f5c1f] text-white font-bold px-6 py-3 rounded-xl flex items-center gap-2 transition-colors"
+              className="bg-green-500 hover:bg-green-400 text-white font-bold px-6 py-3 rounded-xl flex items-center gap-2 transition-colors"
             >
               <MessageCircle size={16} /> WhatsApp for Free Advice
             </a>

@@ -1,5 +1,4 @@
 import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
-import logo from '../assets/ChatGPT_Image_Apr_28,_2026,_01_06_40_AM.png';
 
 interface FooterProps {
   onNavigate: (page: string) => void;
@@ -12,14 +11,20 @@ export default function Footer({ onNavigate }: FooterProps) {
   };
 
   return (
-    <footer className="bg-[#0d1f4f] text-gray-300">
+    <footer className="bg-gray-900 text-gray-300">
       <div className="max-w-6xl mx-auto px-4 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <button onClick={() => handleNav('home')} className="mb-4 block">
-              <img src={logo} alt="GemPro5IT Logo" className="h-14 w-auto object-contain brightness-0 invert" />
-            </button>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center">
+                <span className="text-white font-black text-sm">G</span>
+              </div>
+              <div>
+                <p className="font-black text-white text-base leading-none">GemPro5IT</p>
+                <p className="text-xs text-gray-400 leading-none">GeM Consultancy</p>
+              </div>
+            </div>
             <p className="text-sm text-gray-400 leading-relaxed">
               End-to-end GeM Portal support — from registration to getting your first government order in 30 days.
             </p>
@@ -34,7 +39,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               </a>
               <a
                 href="tel:9100011053"
-                className="w-9 h-9 bg-[#2563eb] hover:bg-blue-500 rounded-lg flex items-center justify-center transition-colors"
+                className="w-9 h-9 bg-blue-600 hover:bg-blue-500 rounded-lg flex items-center justify-center transition-colors"
               >
                 <Phone size={16} className="text-white" />
               </a>
@@ -55,7 +60,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 <li key={link.id}>
                   <button
                     onClick={() => handleNav(link.id)}
-                    className="text-sm text-gray-400 hover:text-[#f59e0b] transition-colors"
+                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
                   >
                     {link.label}
                   </button>
@@ -82,7 +87,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             <h4 className="text-white font-bold mb-4">Contact Us</h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-2.5">
-                <Phone size={15} className="mt-0.5 text-[#3b82f6] shrink-0" />
+                <Phone size={15} className="mt-0.5 text-blue-400 shrink-0" />
                 <a href="tel:9100011053" className="text-sm text-gray-400 hover:text-white transition-colors">
                   9100011053
                 </a>
@@ -99,7 +104,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
-                <Mail size={15} className="mt-0.5 text-[#f59e0b] shrink-0" />
+                <Mail size={15} className="mt-0.5 text-blue-400 shrink-0" />
                 <a href="mailto:sanuraproducts@gmail.com" className="text-sm text-gray-400 hover:text-white transition-colors break-all">
                   sanuraproducts@gmail.com
                 </a>
@@ -115,7 +120,7 @@ export default function Footer({ onNavigate }: FooterProps) {
         </div>
       </div>
 
-      <div className="border-t border-white/10 py-5">
+      <div className="border-t border-gray-800 py-5">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-2">
           <p className="text-xs text-gray-500">
             &copy; {new Date().getFullYear()} GemPro5IT. All rights reserved.

@@ -14,7 +14,7 @@ const plans = [
     priceNote: 'Call for exact pricing',
     color: 'border-gray-200',
     headerBg: 'bg-gray-50',
-    buttonBg: 'bg-[#1a3a8f] hover:bg-[#0d1f4f]',
+    buttonBg: 'bg-blue-600 hover:bg-blue-700',
     badgeBg: null,
     features: [
       'GeM Seller Registration',
@@ -40,7 +40,7 @@ const plans = [
     priceNote: 'Call for exact pricing',
     color: 'border-blue-200',
     headerBg: 'bg-blue-50',
-    buttonBg: 'bg-[#1a3a8f] hover:bg-[#0d1f4f]',
+    buttonBg: 'bg-blue-600 hover:bg-blue-700',
     badgeBg: null,
     features: [
       'Everything in Starter',
@@ -67,8 +67,8 @@ const plans = [
     priceNote: 'Call for exact pricing',
     color: 'border-amber-400',
     headerBg: 'bg-gradient-to-br from-amber-50 to-amber-100',
-    buttonBg: 'bg-[#d97706] hover:bg-[#b45309]',
-    badgeBg: 'bg-[#f59e0b] text-[#0d1f4f]',
+    buttonBg: 'bg-amber-500 hover:bg-amber-600',
+    badgeBg: 'bg-amber-400 text-white',
     features: [
       'Everything in Growth',
       'Product listing (up to 10 products)',
@@ -93,10 +93,10 @@ const plans = [
     badge: 'Best Value',
     price: 'Get Quote',
     priceNote: 'Call for exact pricing',
-    color: 'border-[#1a3a8f]',
-    headerBg: 'bg-gradient-to-br from-[#0d1f4f] to-[#1a3a8f]',
-    buttonBg: 'bg-[#f59e0b] hover:bg-[#d97706]',
-    badgeBg: 'bg-[#2a7a2a] text-white',
+    color: 'border-blue-600',
+    headerBg: 'bg-gradient-to-br from-blue-700 to-blue-600',
+    buttonBg: 'bg-white hover:bg-blue-50',
+    badgeBg: 'bg-green-500 text-white',
     features: [
       'Everything in Professional',
       'Dedicated relationship manager',
@@ -134,7 +134,7 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#0d1f4f] via-[#1a3a8f] to-[#1a5fa8] text-white pt-28 pb-16">
+      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white pt-28 pb-16">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <span className="inline-block bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium text-blue-200 mb-4">
             Transparent Pricing
@@ -177,7 +177,7 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
                     {plan.name}
                   </h3>
                   <div className="mt-3">
-                    <span className={`text-2xl font-black ${plan.isHighlight ? 'text-[#f59e0b]' : 'text-[#1a3a8f]'}`}>
+                    <span className={`text-2xl font-black ${plan.isHighlight ? 'text-amber-300' : 'text-blue-700'}`}>
                       {plan.price}
                     </span>
                     <p className={`text-xs mt-0.5 ${plan.isHighlight ? 'text-blue-200' : 'text-gray-400'}`}>
@@ -221,7 +221,7 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
                 <div className="p-5 border-t border-gray-100">
                   <button
                     onClick={() => handleNav('contact')}
-                    className={`w-full ${plan.buttonBg} ${plan.isHighlight ? 'text-[#0d1f4f]' : 'text-white'} font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 transition-colors text-sm`}
+                    className={`w-full ${plan.buttonBg} ${plan.isHighlight ? 'text-blue-800' : 'text-white'} font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 transition-colors text-sm`}
                   >
                     Get Started <ArrowRight size={14} />
                   </button>
@@ -240,15 +240,15 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
       <section className="py-14 bg-white">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-10">
-            <span className="text-[#2a7a2a] font-bold text-sm uppercase tracking-widest">Optional Add-Ons</span>
-            <h2 className="text-2xl md:text-3xl font-black text-[#0d1f4f] mt-2">
+            <span className="text-blue-600 font-bold text-sm uppercase tracking-widest">Optional Add-Ons</span>
+            <h2 className="text-2xl md:text-3xl font-black text-gray-900 mt-2">
               Enhance Your Plan with Add-Ons
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {addons.map((addon) => (
               <div key={addon.name} className="border border-gray-100 rounded-xl p-4 bg-gray-50 flex gap-3">
-                <CheckCircle size={16} className="text-[#2a7a2a] shrink-0 mt-0.5" />
+                <CheckCircle size={16} className="text-blue-500 shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-gray-800 text-sm">{addon.name}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{addon.desc}</p>
@@ -260,7 +260,7 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
       </section>
 
       {/* Guarantee */}
-      <section className="py-12 bg-gradient-to-r from-[#2a7a2a] to-[#1f5c1f] text-white">
+      <section className="py-12 bg-gradient-to-r from-green-600 to-green-700 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
@@ -284,7 +284,7 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
           <div className="flex flex-wrap justify-center gap-4">
             <a
               href="tel:9100011053"
-              className="bg-[#1a3a8f] hover:bg-[#2563eb] text-white font-black px-7 py-3.5 rounded-xl flex items-center gap-2 transition-colors"
+              className="bg-blue-600 hover:bg-blue-500 text-white font-black px-7 py-3.5 rounded-xl flex items-center gap-2 transition-colors"
             >
               <Phone size={18} /> Call: 9100011053
             </a>
@@ -292,7 +292,7 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
               href="https://wa.me/919100011053?text=Hi%2C%20I%20want%20to%20know%20about%20GeM%20pricing%20plans"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#2a7a2a] hover:bg-[#1f5c1f] text-white font-bold px-7 py-3.5 rounded-xl flex items-center gap-2 transition-colors"
+              className="bg-green-500 hover:bg-green-400 text-white font-bold px-7 py-3.5 rounded-xl flex items-center gap-2 transition-colors"
             >
               <MessageCircle size={18} /> WhatsApp Us
             </a>

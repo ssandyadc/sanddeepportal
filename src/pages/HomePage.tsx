@@ -31,28 +31,28 @@ const audiences = [
     title: 'Graduates & Housewives',
     desc: 'Start a profitable home-based business with zero prior experience. We guide you step by step.',
     color: 'bg-blue-50 border-blue-100',
-    iconBg: 'bg-blue-100 text-[#1a3a8f]',
+    iconBg: 'bg-blue-100 text-blue-600',
   },
   {
     icon: TrendingUp,
     title: 'MSMEs & Traders',
     desc: 'Scale your existing business by tapping into lakhs of crores worth of government procurement.',
     color: 'bg-green-50 border-green-100',
-    iconBg: 'bg-green-100 text-[#2a7a2a]',
+    iconBg: 'bg-green-100 text-green-600',
   },
   {
     icon: Award,
     title: 'Manufacturers',
     desc: 'Get OEM approval, list your products, and start winning government tenders directly.',
-    color: 'bg-orange-50 border-orange-100',
-    iconBg: 'bg-orange-100 text-orange-600',
+    color: 'bg-amber-50 border-amber-100',
+    iconBg: 'bg-amber-100 text-amber-600',
   },
   {
     icon: Shield,
     title: 'Service Providers',
     desc: 'Register your service category on GeM and bid for government contracts with our expert support.',
-    color: 'bg-sky-50 border-sky-100',
-    iconBg: 'bg-sky-100 text-sky-600',
+    color: 'bg-red-50 border-red-100',
+    iconBg: 'bg-red-100 text-red-600',
   },
 ];
 
@@ -132,7 +132,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
       >
         <span className="font-semibold text-gray-800 text-sm md:text-base">{q}</span>
         {open ? (
-          <ChevronUp size={18} className="text-[#1a3a8f] shrink-0 ml-3" />
+          <ChevronUp size={18} className="text-blue-600 shrink-0 ml-3" />
         ) : (
           <ChevronDown size={18} className="text-gray-400 shrink-0 ml-3" />
         )}
@@ -154,22 +154,21 @@ export default function HomePage({ onNavigate }: HomePageProps) {
 
   return (
     <div>
-      {/* HERO — navy + green gradient matching logo */}
-      <section className="relative bg-gradient-to-br from-[#0d1f4f] via-[#1a3a8f] to-[#1a5fa8] text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
+      {/* HERO */}
+      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 right-10 w-72 h-72 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#f97316] rounded-full blur-3xl" />
-          <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-[#2a7a2a] rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-400 rounded-full blur-3xl" />
         </div>
         <div className="relative max-w-6xl mx-auto px-4 pt-28 pb-20 md:pt-36 md:pb-28">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-[#f59e0b]/20 border border-[#f59e0b]/40 rounded-full px-4 py-1.5 mb-6">
-              <span className="w-2 h-2 bg-[#f59e0b] rounded-full animate-pulse" />
-              <span className="text-[#fcd34d] text-sm font-medium">Trusted by 500+ GeM Sellers Across India</span>
+            <div className="inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/40 rounded-full px-4 py-1.5 mb-6">
+              <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
+              <span className="text-amber-300 text-sm font-medium">Trusted by 500+ GeM Sellers Across India</span>
             </div>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-5">
               Start Your GeM Seller Journey
-              <span className="text-[#f59e0b] block mt-1">in 30 Days</span>
+              <span className="text-amber-400 block mt-1">in 30 Days</span>
             </h1>
             <p className="text-lg md:text-xl text-blue-100 leading-relaxed mb-8 max-w-2xl">
               Complete support from registration to your <strong className="text-white">first government order</strong>.
@@ -178,7 +177,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             <div className="flex flex-wrap gap-4">
               <button
                 onClick={() => handleNav('contact')}
-                className="bg-[#f59e0b] hover:bg-[#d97706] text-[#0d1f4f] font-black px-7 py-3.5 rounded-xl text-base transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 flex items-center gap-2"
+                className="bg-amber-400 hover:bg-amber-300 text-blue-900 font-black px-7 py-3.5 rounded-xl text-base transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 flex items-center gap-2"
               >
                 Start Selling on GeM Today
                 <ArrowRight size={18} />
@@ -187,7 +186,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 href="https://wa.me/919100011053?text=Hi%2C%20I%20want%20to%20know%20more%20about%20GeM%20registration"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#2a7a2a] hover:bg-[#1f5c1f] text-white font-bold px-7 py-3.5 rounded-xl text-base transition-all duration-200 shadow-lg flex items-center gap-2"
+                className="bg-green-500 hover:bg-green-400 text-white font-bold px-7 py-3.5 rounded-xl text-base transition-all duration-200 shadow-lg flex items-center gap-2"
               >
                 <MessageCircle size={18} />
                 WhatsApp Us
@@ -196,7 +195,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             <div className="mt-8 flex flex-wrap gap-4">
               {['Free Consultation', 'No Hidden Charges', '30-Day Guarantee', 'Expert Support'].map((item) => (
                 <div key={item} className="flex items-center gap-1.5">
-                  <CheckCircle size={16} className="text-[#4ade80]" />
+                  <CheckCircle size={16} className="text-green-400" />
                   <span className="text-sm text-blue-100">{item}</span>
                 </div>
               ))}
@@ -205,11 +204,11 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
 
         {/* Stats bar */}
-        <div className="relative bg-[#0d1f4f]/60 border-t border-white/10">
+        <div className="relative bg-blue-950/50 border-t border-blue-600/30">
           <div className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="text-2xl md:text-3xl font-black text-[#f59e0b]">{stat.value}</p>
+                <p className="text-2xl md:text-3xl font-black text-amber-400">{stat.value}</p>
                 <p className="text-xs md:text-sm text-blue-200">{stat.label}</p>
               </div>
             ))}
@@ -221,8 +220,8 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="text-[#2a7a2a] font-bold text-sm uppercase tracking-widest">Who We Help</span>
-            <h2 className="text-2xl md:text-4xl font-black text-[#0d1f4f] mt-2">
+            <span className="text-blue-600 font-bold text-sm uppercase tracking-widest">Who We Help</span>
+            <h2 className="text-2xl md:text-4xl font-black text-gray-900 mt-2">
               GeM Is for Everyone — We Make It Easy
             </h2>
             <p className="text-gray-500 mt-3 max-w-xl mx-auto">
@@ -235,7 +234,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${a.iconBg}`}>
                   <a.icon size={22} />
                 </div>
-                <h3 className="font-bold text-[#0d1f4f] mb-2">{a.title}</h3>
+                <h3 className="font-bold text-gray-800 mb-2">{a.title}</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">{a.desc}</p>
               </div>
             ))}
@@ -248,22 +247,22 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="text-orange-500 font-bold text-sm uppercase tracking-widest">The Challenge</span>
-              <h2 className="text-2xl md:text-4xl font-black text-[#0d1f4f] mt-2 mb-6">
+              <span className="text-red-500 font-bold text-sm uppercase tracking-widest">The Challenge</span>
+              <h2 className="text-2xl md:text-4xl font-black text-gray-900 mt-2 mb-6">
                 GeM Is Profitable — But Complex Without Guidance
               </h2>
               <div className="space-y-3">
                 {problems.map((p) => (
-                  <div key={p} className="flex items-start gap-3 p-3 bg-orange-50 border border-orange-100 rounded-lg">
-                    <span className="w-5 h-5 rounded-full bg-orange-100 text-orange-500 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">!</span>
+                  <div key={p} className="flex items-start gap-3 p-3 bg-red-50 border border-red-100 rounded-lg">
+                    <span className="w-5 h-5 rounded-full bg-red-100 text-red-500 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">!</span>
                     <span className="text-sm text-gray-700">{p}</span>
                   </div>
                 ))}
               </div>
             </div>
             <div>
-              <span className="text-[#2a7a2a] font-bold text-sm uppercase tracking-widest">Our Solution</span>
-              <h2 className="text-2xl md:text-4xl font-black text-[#0d1f4f] mt-2 mb-6">
+              <span className="text-green-600 font-bold text-sm uppercase tracking-widest">Our Solution</span>
+              <h2 className="text-2xl md:text-4xl font-black text-gray-900 mt-2 mb-6">
                 We Handle Everything — You Just Sell
               </h2>
               <div className="space-y-4">
@@ -274,11 +273,11 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                   { step: '04', title: 'Bid & Win Orders', desc: 'Training on L1 strategy, live bid participation, reverse auction support.' },
                 ].map((item) => (
                   <div key={item.step} className="flex gap-4 items-start">
-                    <div className="w-10 h-10 rounded-xl bg-[#1a3a8f] text-white font-black text-sm flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-blue-600 text-white font-black text-sm flex items-center justify-center shrink-0">
                       {item.step}
                     </div>
                     <div>
-                      <h4 className="font-bold text-[#0d1f4f]">{item.title}</h4>
+                      <h4 className="font-bold text-gray-800">{item.title}</h4>
                       <p className="text-sm text-gray-500">{item.desc}</p>
                     </div>
                   </div>
@@ -286,7 +285,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               </div>
               <button
                 onClick={() => handleNav('program')}
-                className="mt-8 bg-[#1a3a8f] hover:bg-[#0d1f4f] text-white font-bold px-6 py-3 rounded-xl flex items-center gap-2 transition-colors"
+                className="mt-8 bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl flex items-center gap-2 transition-colors"
               >
                 See Our 30-Day Timeline <ArrowRight size={16} />
               </button>
@@ -295,21 +294,21 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* PROMISE BANNER — amber from star */}
-      <section className="py-12 bg-gradient-to-r from-[#f59e0b] to-[#f97316]">
+      {/* PROMISE BANNER */}
+      <section className="py-12 bg-gradient-to-r from-amber-400 to-amber-500">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-2 mb-3">
-            <Clock size={24} className="text-[#0d1f4f]" />
-            <h2 className="text-2xl md:text-3xl font-black text-[#0d1f4f]">
+            <Clock size={24} className="text-amber-900" />
+            <h2 className="text-2xl md:text-3xl font-black text-amber-900">
               Our 30-Day Promise
             </h2>
           </div>
-          <p className="text-[#1a1a1a] text-base md:text-lg font-medium max-w-2xl mx-auto">
+          <p className="text-amber-800 text-base md:text-lg font-medium max-w-2xl mx-auto">
             From Day 1 of registration to getting your first government order — we commit to completing the full process in <strong>30 days or less</strong>.
           </p>
           <button
             onClick={() => handleNav('program')}
-            className="mt-5 bg-[#0d1f4f] hover:bg-[#1a3a8f] text-white font-bold px-6 py-3 rounded-xl inline-flex items-center gap-2 transition-colors"
+            className="mt-5 bg-amber-900 hover:bg-amber-800 text-white font-bold px-6 py-3 rounded-xl inline-flex items-center gap-2 transition-colors"
           >
             See the Full Timeline <ArrowRight size={16} />
           </button>
@@ -320,8 +319,8 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="text-[#2a7a2a] font-bold text-sm uppercase tracking-widest">What We Offer</span>
-            <h2 className="text-2xl md:text-4xl font-black text-[#0d1f4f] mt-2">
+            <span className="text-blue-600 font-bold text-sm uppercase tracking-widest">What We Offer</span>
+            <h2 className="text-2xl md:text-4xl font-black text-gray-900 mt-2">
               End-to-End GeM Services
             </h2>
           </div>
@@ -329,26 +328,26 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             {[
               {
                 title: 'Registration & Setup',
-                color: 'border-t-[#1a3a8f]',
+                color: 'border-t-blue-600',
                 items: ['GeM Seller Registration', 'Brand Approval Support', 'OEM Panel Setup', 'Vendor Assessment'],
               },
               {
                 title: 'Catalog & Compliance',
-                color: 'border-t-[#2a7a2a]',
+                color: 'border-t-green-500',
                 items: ['Product Listing', 'Catalog Optimization', 'Document Preparation', 'Authorization Setup'],
               },
               {
                 title: 'Bid & Growth Support',
-                color: 'border-t-[#f59e0b]',
+                color: 'border-t-amber-500',
                 items: ['Bid Participation Training', 'L1 Price Strategy', 'Order Execution Help', 'Seller Rating Growth'],
               },
             ].map((cat) => (
               <div key={cat.title} className={`border-t-4 ${cat.color} border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow`}>
-                <h3 className="font-black text-[#0d1f4f] text-lg mb-4">{cat.title}</h3>
+                <h3 className="font-black text-gray-800 text-lg mb-4">{cat.title}</h3>
                 <ul className="space-y-2.5">
                   {cat.items.map((item) => (
                     <li key={item} className="flex items-center gap-2 text-sm text-gray-600">
-                      <CheckCircle size={15} className="text-[#2a7a2a] shrink-0" />
+                      <CheckCircle size={15} className="text-green-500 shrink-0" />
                       {item}
                     </li>
                   ))}
@@ -359,7 +358,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           <div className="text-center mt-8">
             <button
               onClick={() => handleNav('services')}
-              className="border-2 border-[#1a3a8f] text-[#1a3a8f] hover:bg-[#1a3a8f] hover:text-white font-bold px-6 py-3 rounded-xl transition-all duration-200 inline-flex items-center gap-2"
+              className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-bold px-6 py-3 rounded-xl transition-all duration-200 inline-flex items-center gap-2"
             >
               View All Services <ArrowRight size={16} />
             </button>
@@ -371,8 +370,8 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="text-[#2a7a2a] font-bold text-sm uppercase tracking-widest">Success Stories</span>
-            <h2 className="text-2xl md:text-4xl font-black text-[#0d1f4f] mt-2">
+            <span className="text-blue-600 font-bold text-sm uppercase tracking-widest">Success Stories</span>
+            <h2 className="text-2xl md:text-4xl font-black text-gray-900 mt-2">
               Real Sellers, Real Results
             </h2>
           </div>
@@ -381,16 +380,16 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               <div key={t.name} className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex gap-0.5 mb-4">
                   {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} size={16} className="text-[#f59e0b] fill-[#f59e0b]" />
+                    <Star key={i} size={16} className="text-amber-400 fill-amber-400" />
                   ))}
                 </div>
                 <p className="text-gray-700 text-sm leading-relaxed mb-5">"{t.text}"</p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#1a3a8f] to-[#2563eb] flex items-center justify-center text-white font-bold text-sm">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-sm">
                     {t.avatar}
                   </div>
                   <div>
-                    <p className="font-bold text-[#0d1f4f] text-sm">{t.name}</p>
+                    <p className="font-bold text-gray-800 text-sm">{t.name}</p>
                     <p className="text-xs text-gray-500">{t.role}</p>
                   </div>
                 </div>
@@ -404,8 +403,8 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4">
           <div className="text-center mb-10">
-            <span className="text-[#2a7a2a] font-bold text-sm uppercase tracking-widest">FAQs</span>
-            <h2 className="text-2xl md:text-4xl font-black text-[#0d1f4f] mt-2">
+            <span className="text-blue-600 font-bold text-sm uppercase tracking-widest">FAQs</span>
+            <h2 className="text-2xl md:text-4xl font-black text-gray-900 mt-2">
               Frequently Asked Questions
             </h2>
           </div>
@@ -418,7 +417,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-[#0d1f4f] to-[#1a3a8f] text-white">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-blue-900 to-blue-800 text-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-4xl font-black mb-4">
             Ready to Start Selling on GeM?
@@ -429,7 +428,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           <div className="flex flex-wrap justify-center gap-4">
             <button
               onClick={() => handleNav('contact')}
-              className="bg-[#f59e0b] hover:bg-[#d97706] text-[#0d1f4f] font-black px-7 py-3.5 rounded-xl transition-all duration-200 flex items-center gap-2"
+              className="bg-amber-400 hover:bg-amber-300 text-blue-900 font-black px-7 py-3.5 rounded-xl transition-all duration-200 flex items-center gap-2"
             >
               Get Free Consultation <ArrowRight size={18} />
             </button>
@@ -437,7 +436,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               href="https://wa.me/919100011053?text=Hi%2C%20I%20want%20to%20start%20selling%20on%20GeM"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#2a7a2a] hover:bg-[#1f5c1f] text-white font-bold px-7 py-3.5 rounded-xl transition-all duration-200 flex items-center gap-2"
+              className="bg-green-500 hover:bg-green-400 text-white font-bold px-7 py-3.5 rounded-xl transition-all duration-200 flex items-center gap-2"
             >
               <MessageCircle size={18} /> WhatsApp Now
             </a>

@@ -55,7 +55,7 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#0d1f4f] via-[#1a3a8f] to-[#1a5fa8] text-white pt-28 pb-16">
+      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white pt-28 pb-16">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <span className="inline-block bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium text-blue-200 mb-4">
             Free Consultation
@@ -88,12 +88,12 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
                   href="tel:9100011053"
                   className="flex items-start gap-4 bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow group"
                 >
-                  <div className="w-11 h-11 bg-blue-100 text-[#1a3a8f] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#1a3a8f] group-hover:text-white transition-colors">
+                  <div className="w-11 h-11 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                     <Phone size={20} />
                   </div>
                   <div>
                     <p className="font-bold text-gray-800 text-sm">Call Us</p>
-                    <p className="text-[#1a3a8f] font-semibold">9100011053</p>
+                    <p className="text-blue-600 font-semibold">9100011053</p>
                     <p className="text-xs text-gray-400">Mon–Sat, 9 AM – 7 PM</p>
                   </div>
                 </a>
@@ -105,12 +105,12 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
                   rel="noopener noreferrer"
                   className="flex items-start gap-4 bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow group"
                 >
-                  <div className="w-11 h-11 bg-green-100 text-[#2a7a2a] rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#2a7a2a] group-hover:text-white transition-colors">
+                  <div className="w-11 h-11 bg-green-100 text-green-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-green-600 group-hover:text-white transition-colors">
                     <MessageCircle size={20} />
                   </div>
                   <div>
                     <p className="font-bold text-gray-800 text-sm">WhatsApp</p>
-                    <p className="text-[#2a7a2a] font-semibold">Chat with Us</p>
+                    <p className="text-green-600 font-semibold">Chat with Us</p>
                     <p className="text-xs text-gray-400">Fastest response — usually within 30 mins</p>
                   </div>
                 </a>
@@ -146,13 +146,13 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
               </div>
 
               {/* Quick CTA */}
-              <div className="bg-gradient-to-br from-[#0d1f4f] to-[#1a3a8f] rounded-2xl p-5 text-white">
+              <div className="bg-gradient-to-br from-blue-700 to-blue-600 rounded-2xl p-5 text-white">
                 <h3 className="font-black text-base mb-1">Need Immediate Help?</h3>
                 <p className="text-blue-200 text-sm mb-4">Call or WhatsApp us right now for instant guidance.</p>
                 <div className="flex gap-3">
                   <a
                     href="tel:9100011053"
-                    className="flex-1 bg-white text-[#1a3a8f] font-bold py-2.5 rounded-lg text-sm text-center hover:bg-blue-50 transition-colors"
+                    className="flex-1 bg-white text-blue-700 font-bold py-2.5 rounded-lg text-sm text-center hover:bg-blue-50 transition-colors"
                   >
                     Call Now
                   </a>
@@ -171,7 +171,7 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
             {/* Lead Form */}
             <div className="lg:col-span-3">
               <div className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
-                <div className="bg-gradient-to-r from-[#0d1f4f] to-[#1a3a8f] px-6 py-5">
+                <div className="bg-gradient-to-r from-blue-800 to-blue-700 px-6 py-5">
                   <h2 className="text-xl font-black text-white">Send Us Your Enquiry</h2>
                   <p className="text-blue-200 text-sm mt-1">Fill in your details and we'll call you back within 2 hours.</p>
                 </div>
@@ -209,7 +209,7 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
                             onChange={handleChange}
                             placeholder="Your full name"
                             required
-                            className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#1a3a8f] focus:border-transparent transition-all"
+                            className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                           />
                         </div>
                         <div>
@@ -223,7 +223,7 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
                             onChange={handleChange}
                             placeholder="10-digit mobile number"
                             required
-                            className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#1a3a8f] focus:border-transparent transition-all"
+                            className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                           />
                         </div>
                       </div>
@@ -238,7 +238,7 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
                           value={form.email}
                           onChange={handleChange}
                           placeholder="your@email.com (optional)"
-                          className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#1a3a8f] focus:border-transparent transition-all"
+                          className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                         />
                       </div>
 
@@ -250,7 +250,7 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
                           name="business_type"
                           value={form.business_type}
                           onChange={handleChange}
-                          className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#1a3a8f] focus:border-transparent transition-all bg-white"
+                          className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
                         >
                           <option value="">Select your business type</option>
                           {businessTypes.map((bt) => (
@@ -269,7 +269,7 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
                           onChange={handleChange}
                           rows={4}
                           placeholder="Tell us what you need — registration, catalog listing, bid support, or anything else..."
-                          className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#1a3a8f] focus:border-transparent transition-all resize-none"
+                          className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
                         />
                       </div>
 
@@ -283,7 +283,7 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
                       <button
                         type="submit"
                         disabled={submitting}
-                        className="w-full bg-[#1a3a8f] hover:bg-[#0d1f4f] disabled:bg-[#7a90c0] text-white font-black py-3.5 rounded-xl flex items-center justify-center gap-2 transition-colors text-sm"
+                        className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-black py-3.5 rounded-xl flex items-center justify-center gap-2 transition-colors text-sm"
                       >
                         {submitting ? (
                           <>
@@ -320,7 +320,7 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
             <div className="mt-4 flex flex-wrap justify-center gap-4">
               <a
                 href="tel:9100011053"
-                className="flex items-center gap-2 bg-[#1a3a8f] hover:bg-[#2563eb] text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-colors"
+                className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-colors"
               >
                 <Phone size={15} /> Book Appointment
               </a>

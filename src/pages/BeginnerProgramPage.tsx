@@ -20,9 +20,9 @@ const weeks = [
     week: 'Week 1',
     icon: BookOpen,
     title: 'Registration & Setup',
-    color: 'bg-[#1a3a8f]',
+    color: 'bg-blue-600',
     lightColor: 'bg-blue-50 border-blue-200',
-    textColor: 'text-[#1a3a8f]',
+    textColor: 'text-blue-600',
     tasks: [
       'GeM Seller account creation',
       'Aadhaar & PAN verification',
@@ -37,9 +37,9 @@ const weeks = [
     week: 'Week 2',
     icon: ShoppingBag,
     title: 'Catalog Listing',
-    color: 'bg-[#2a7a2a]',
+    color: 'bg-green-600',
     lightColor: 'bg-green-50 border-green-200',
-    textColor: 'text-[#2a7a2a]',
+    textColor: 'text-green-600',
     tasks: [
       'Product/service category selection',
       'Professional product listing creation',
@@ -54,9 +54,9 @@ const weeks = [
     week: 'Week 3',
     icon: Target,
     title: 'Bid Participation',
-    color: 'bg-[#d97706]',
+    color: 'bg-amber-500',
     lightColor: 'bg-amber-50 border-amber-200',
-    textColor: 'text-[#d97706]',
+    textColor: 'text-amber-600',
     tasks: [
       'Bid alert setup for your category',
       'Live bid identification & shortlisting',
@@ -71,9 +71,9 @@ const weeks = [
     week: 'Week 4',
     icon: TrendingUp,
     title: 'First Order Targeting',
-    color: 'bg-[#ea580c]',
-    lightColor: 'bg-orange-50 border-orange-200',
-    textColor: 'text-[#ea580c]',
+    color: 'bg-red-600',
+    lightColor: 'bg-red-50 border-red-200',
+    textColor: 'text-red-600',
     tasks: [
       'Aggressive bid participation on suitable tenders',
       'Direct order monitoring & follow-up',
@@ -130,7 +130,7 @@ export default function BeginnerProgramPage({ onNavigate }: BeginnerProgramPageP
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#0d1f4f] via-[#1a3a8f] to-[#1a5fa8] text-white pt-28 pb-16">
+      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white pt-28 pb-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="max-w-3xl">
             <span className="inline-block bg-amber-400/20 border border-amber-400/40 rounded-full px-4 py-1.5 text-sm font-medium text-amber-300 mb-4">
@@ -155,7 +155,7 @@ export default function BeginnerProgramPage({ onNavigate }: BeginnerProgramPageP
             <div className="flex flex-wrap gap-4">
               <button
                 onClick={() => handleNav('contact')}
-                className="bg-[#f59e0b] hover:bg-[#d97706] text-[#0d1f4f] font-black px-7 py-3.5 rounded-xl flex items-center gap-2 transition-all shadow-lg"
+                className="bg-amber-400 hover:bg-amber-300 text-blue-900 font-black px-7 py-3.5 rounded-xl flex items-center gap-2 transition-all shadow-lg"
               >
                 Enroll Now <ArrowRight size={18} />
               </button>
@@ -163,7 +163,7 @@ export default function BeginnerProgramPage({ onNavigate }: BeginnerProgramPageP
                 href="https://wa.me/919100011053?text=Hi%2C%20I%20want%20to%20join%20the%2030-Day%20GeM%20Program"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#2a7a2a] hover:bg-[#1f5c1f] text-white font-bold px-7 py-3.5 rounded-xl flex items-center gap-2 transition-colors"
+                className="bg-green-500 hover:bg-green-400 text-white font-bold px-7 py-3.5 rounded-xl flex items-center gap-2 transition-colors"
               >
                 <MessageCircle size={18} /> WhatsApp for Details
               </a>
@@ -177,8 +177,8 @@ export default function BeginnerProgramPage({ onNavigate }: BeginnerProgramPageP
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="text-[#1a3a8f] font-bold text-sm uppercase tracking-widest">About the Program</span>
-              <h2 className="text-2xl md:text-3xl font-black text-[#0d1f4f] mt-2 mb-4">
+              <span className="text-blue-600 font-bold text-sm uppercase tracking-widest">About the Program</span>
+              <h2 className="text-2xl md:text-3xl font-black text-gray-900 mt-2 mb-4">
                 Complete Beginner to Active GeM Seller — In Just 30 Days
               </h2>
               <p className="text-gray-600 leading-relaxed mb-4">
@@ -195,7 +195,7 @@ export default function BeginnerProgramPage({ onNavigate }: BeginnerProgramPageP
                   { num: '95%', label: 'Success Rate' },
                 ].map((item) => (
                   <div key={item.label} className="bg-blue-50 border border-blue-100 rounded-xl p-4 text-center">
-                    <p className="text-2xl font-black text-[#1a3a8f]">{item.num}</p>
+                    <p className="text-2xl font-black text-blue-700">{item.num}</p>
                     <p className="text-sm text-gray-600">{item.label}</p>
                   </div>
                 ))}
@@ -213,7 +213,7 @@ export default function BeginnerProgramPage({ onNavigate }: BeginnerProgramPageP
               </div>
               <button
                 onClick={() => handleNav('pricing')}
-                className="mt-6 w-full bg-[#1a3a8f] hover:bg-[#0d1f4f] text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-colors"
+                className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-colors"
               >
                 View Pricing <ArrowRight size={16} />
               </button>
@@ -226,8 +226,8 @@ export default function BeginnerProgramPage({ onNavigate }: BeginnerProgramPageP
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="text-[#2a7a2a] font-bold text-sm uppercase tracking-widest">The Journey</span>
-            <h2 className="text-2xl md:text-4xl font-black text-[#0d1f4f] mt-2">
+            <span className="text-blue-600 font-bold text-sm uppercase tracking-widest">The Journey</span>
+            <h2 className="text-2xl md:text-4xl font-black text-gray-900 mt-2">
               Your 30-Day GeM Success Timeline
             </h2>
             <p className="text-gray-500 mt-3 max-w-lg mx-auto">
@@ -277,7 +277,7 @@ export default function BeginnerProgramPage({ onNavigate }: BeginnerProgramPageP
           {/* Arrow connector for desktop */}
           <div className="hidden lg:flex items-center justify-center mt-8 gap-2">
             <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-full px-6 py-3 shadow-sm">
-              <Clock size={16} className="text-[#1a3a8f]" />
+              <Clock size={16} className="text-blue-600" />
               <span className="text-sm font-bold text-gray-700">Week 1</span>
               <ArrowRight size={14} className="text-gray-400" />
               <span className="text-sm font-bold text-gray-700">Week 2</span>
@@ -295,7 +295,7 @@ export default function BeginnerProgramPage({ onNavigate }: BeginnerProgramPageP
       <section className="py-14 bg-white">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-2xl md:text-3xl font-black text-[#0d1f4f]">This Program Is Perfect For</h2>
+            <h2 className="text-2xl md:text-3xl font-black text-gray-900">This Program Is Perfect For</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {[
@@ -344,7 +344,7 @@ export default function BeginnerProgramPage({ onNavigate }: BeginnerProgramPageP
       <section className="py-14 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-2xl md:text-3xl font-black text-[#0d1f4f]">What Our Beginners Say</h2>
+            <h2 className="text-2xl md:text-3xl font-black text-gray-900">What Our Beginners Say</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {testimonials.map((t) => (
@@ -356,7 +356,7 @@ export default function BeginnerProgramPage({ onNavigate }: BeginnerProgramPageP
                 </div>
                 <p className="text-sm text-gray-600 leading-relaxed mb-4">"{t.text}"</p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#1a3a8f] to-[#2563eb] flex items-center justify-center text-white font-bold text-sm">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-sm">
                     {t.avatar}
                   </div>
                   <div>
@@ -371,7 +371,7 @@ export default function BeginnerProgramPage({ onNavigate }: BeginnerProgramPageP
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-br from-[#0d1f4f] to-[#1a3a8f] text-white">
+      <section className="py-16 bg-gradient-to-br from-blue-900 to-blue-800 text-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-black mb-3">
             Ready to Start Your GeM Journey?
@@ -382,7 +382,7 @@ export default function BeginnerProgramPage({ onNavigate }: BeginnerProgramPageP
           <div className="flex flex-wrap justify-center gap-4">
             <button
               onClick={() => handleNav('contact')}
-              className="bg-[#f59e0b] hover:bg-[#d97706] text-[#0d1f4f] font-black px-7 py-3.5 rounded-xl flex items-center gap-2 transition-all shadow-lg"
+              className="bg-amber-400 hover:bg-amber-300 text-blue-900 font-black px-7 py-3.5 rounded-xl flex items-center gap-2 transition-all shadow-lg"
             >
               Enroll in 30-Day Program <ArrowRight size={18} />
             </button>
@@ -390,7 +390,7 @@ export default function BeginnerProgramPage({ onNavigate }: BeginnerProgramPageP
               href="https://wa.me/919100011053?text=Hi%2C%20I%20want%20to%20join%20the%2030-Day%20GeM%20Beginner%20Program"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#2a7a2a] hover:bg-[#1f5c1f] text-white font-bold px-7 py-3.5 rounded-xl flex items-center gap-2 transition-colors"
+              className="bg-green-500 hover:bg-green-400 text-white font-bold px-7 py-3.5 rounded-xl flex items-center gap-2 transition-colors"
             >
               <MessageCircle size={18} /> Chat on WhatsApp
             </a>
