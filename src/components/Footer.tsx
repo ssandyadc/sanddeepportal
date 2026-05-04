@@ -123,10 +123,10 @@ export default function Footer({ onNavigate }: FooterProps) {
       <div className="border-t border-gray-800 py-5">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-2">
           <p className="text-xs text-gray-500">
-            &copy; {new Date().getFullYear()} GemPro5IT. All rights reserved.
+            &copy; {new Date().getFullYear()} GemPortalAssist. All rights reserved.
           </p>
           <p className="text-xs text-gray-500">
-            Domain: <span className="text-gray-400">gempro5it.com</span>
+            Domain: <span className="text-gray-400">GemPortalAssist.com</span>
           </p>
         </div>
       </div>

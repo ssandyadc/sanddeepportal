@@ -140,7 +140,7 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
                     <p className="text-gray-600 text-sm leading-relaxed">
                       Jaya Enclave, New Bowenpally,<br />Hyderabad, Telangana
                     </p>
-                    <p className="text-xs text-gray-400 mt-0.5">gempro5it.com</p>
+                    <p className="text-xs text-gray-400 mt-0.5">GemPortalAssist.com</p>
                   </div>
                 </div>
               </div>
