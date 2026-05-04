@@ -80,13 +80,17 @@ export default function CategoryIntelligencePage({ onNavigate }: CategoryIntelli
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleSampleDownload = () => {
+  const handleSampleDownload = async () => {
+    const res = await fetch('/sample_file_2026.xlsx');
+    const blob = await res.blob();
+    const url = URL.createObjectURL(new Blob([blob], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
     const link = document.createElement('a');
-    link.href = '/sample_file_2026.xlsx';
+    link.href = url;
     link.download = 'GemPortalAssist-Sample-Category-Analysis.xlsx';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   return (
