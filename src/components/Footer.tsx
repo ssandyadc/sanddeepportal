@@ -123,7 +123,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             &copy; {new Date().getFullYear()} Gem Portal Assist. All rights reserved.
           </p>
           <p className="text-xs text-gray-500">
-            Domain: <span className="text-gray-400">GemPortalAssist.com</span>
+            Domain: <span className="text-gray-400">GemPortalAssist.in</span>
           </p>
         </div>
       </div>
