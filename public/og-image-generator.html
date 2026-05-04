@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>OG Image Generator – GeM Portal Assist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0f172a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      color: #94a3b8;
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .size-label {
+      color: #475569;
+      font-size: 13px;
+      margin-bottom: 32px;
+    }
+
+    /* ── 1200×630 OG Card ── */
+    #og-card {
+      width: 1200px;
+      height: 630px;
+      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 45%, #2563eb 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 72px 88px;
+      flex-shrink: 0;
+    }
+
+    /* Decorative blobs */
+    .blob-1 {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(96,165,250,0.18) 0%, transparent 70%);
+      top: -160px;
+      right: -80px;
+      pointer-events: none;
+    }
+    .blob-2 {
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%);
+      bottom: -120px;
+      left: 60px;
+      pointer-events: none;
+    }
+    .blob-3 {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.08);
+      bottom: 40px;
+      right: 120px;
+      pointer-events: none;
+    }
+
+    /* Grid lines */
+    .grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: #93c5fd;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 100px;
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 1;
+    }
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #60a5fa;
+      box-shadow: 0 0 8px #60a5fa;
+    }
+
+    /* Brand row */
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-icon {
+      width: 76px;
+      height: 76px;
+      background: linear-gradient(135deg, #3b82f6, #60a5fa);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px rgba(59,130,246,0.5), 0 0 0 1px rgba(255,255,255,0.15);
+      flex-shrink: 0;
+    }
+
+    .brand-icon svg {
+      width: 40px;
+      height: 40px;
+      fill: white;
+    }
+
+    .brand-name {
+      font-size: 62px;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+    .brand-name span {
+      color: #93c5fd;
+    }
+
+    /* Tagline */
+    .tagline {
+      font-size: 22px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 48px;
+      line-height: 1.5;
+      max-width: 680px;
+      position: relative;
+      z-index: 1;
+    }
+    .tagline strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Pills */
+    .pills {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .pill {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #e2e8f0;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 10px 22px;
+      border-radius: 100px;
+    }
+    .pill.highlight {
+      background: #2563eb;
+      border-color: #3b82f6;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(37,99,235,0.5);
+    }
+
+    /* Right side stats panel */
+    .stats-panel {
+      position: absolute;
+      right: 88px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 1;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 20px 28px;
+      text-align: center;
+      min-width: 160px;
+      backdrop-filter: blur(4px);
+    }
+    .stat-number {
+      font-size: 38px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-number span {
+      color: #60a5fa;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    /* Domain watermark */
+    .domain {
+      position: absolute;
+      bottom: 32px;
+      right: 88px;
+      color: rgba(255,255,255,0.35);
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      z-index: 1;
+    }
+
+    /* Divider line */
+    .divider {
+      position: absolute;
+      left: 88px;
+      bottom: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, #3b82f6, transparent);
+      opacity: 0.4;
+      z-index: 1;
+    }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      gap: 16px;
+      margin-top: 32px;
+      align-items: center;
+    }
+    .btn {
+      padding: 14px 36px;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary { background: #2563eb; color: white; }
+    .btn-secondary { background: #1e293b; color: #94a3b8; border: 1px solid #334155; }
+
+    .note {
+      color: #475569;
+      font-size: 13px;
+      margin-top: 16px;
+      text-align: center;
+    }
+    .note strong { color: #64748b; }
+
+    /* Step instructions */
+    .steps {
+      margin-top: 36px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 24px 32px;
+      max-width: 700px;
+      width: 100%;
+    }
+    .steps h3 { color: #e2e8f0; font-size: 15px; font-weight: 600; margin-bottom: 16px; }
+    .steps ol { color: #94a3b8; font-size: 14px; line-height: 2; padding-left: 20px; }
+    .steps li strong { color: #60a5fa; }
+  </style>
+</head>
+<body>
+
+  <h1>GeM Portal Assist — OG Image Preview</h1>
+  <p class="size-label">1200 × 630 px — WhatsApp / Facebook / Twitter</p>
+
+  <div id="og-card">
+    <div class="grid-lines"></div>
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
+    <div class="blob-3"></div>
+    <div class="divider"></div>
+
+    <div class="badge">
+      <span class="badge-dot"></span>
+      Government e-Marketplace Experts
+    </div>
+
+    <div class="brand-row">
+      <div class="brand-icon">
+        <!-- Building/government icon -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 21h18v-2H3v2zm0-4h18v-2H3v2zm2-4h14v-2H5v2zM12 1L2 6v2h20V6L12 1zm0 2.26L19.5 7h-15L12 3.26z"/>
+        </svg>
+      </div>
+      <div class="brand-name">GeM Portal<span>Assist</span></div>
+    </div>
+
+    <div class="tagline">
+      From Registration to Your <strong>First Government Order</strong><br />
+      — Guaranteed in <strong>30 Days</strong>
+    </div>
+
+    <div class="pills">
+      <div class="pill highlight">GeM Registration</div>
+      <div class="pill">Product Listing</div>
+      <div class="pill">Bid Management</div>
+      <div class="pill">30-Day Guarantee</div>
+    </div>
+
+    <div class="stats-panel">
+      <div class="stat-card">
+        <div class="stat-number">30<span>d</span></div>
+        <div class="stat-label">First Order Guarantee</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100<span>%</span></div>
+        <div class="stat-label">End-to-End Support</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number"><span>₹</span>0</div>
+        <div class="stat-label">Free Consultation</div>
+      </div>
+    </div>
+
+    <div class="domain">gemportalassist.in</div>
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-primary" onclick="downloadImage()">Download og-image.png</button>
+    <button class="btn btn-secondary" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <p class="note">
+    Upload the downloaded <strong>og-image.png</strong> to your website root so it's reachable at
+    <strong>https://gemportalassist.in/og-image.png</strong>
+  </p>
+
+  <div class="steps">
+    <h3>How to publish your OG image</h3>
+    <ol>
+      <li>Click <strong>Download og-image.png</strong> above</li>
+      <li>In your hosting panel (Netlify / Vercel / cPanel), upload <strong>og-image.png</strong> to the <strong>public/</strong> or root folder</li>
+      <li>Verify it loads at <strong>https://gemportalassist.in/og-image.png</strong></li>
+      <li>Test your WhatsApp preview at <strong>https://www.opengraph.xyz</strong> — paste your URL there to refresh the cache</li>
+      <li>Share your link on WhatsApp — your branded card will now appear</li>
+    </ol>
+  </div>
+
+  <script>
+    async function downloadImage() {
+      const card = document.getElementById('og-card');
+      const btn = document.querySelector('.btn-primary');
+      btn.textContent = 'Generating…';
+      btn.disabled = true;
+
+      // Load html2canvas dynamically
+      if (!window.html2canvas) {
+        await new Promise((resolve, reject) => {
+          const s = document.createElement('script');
+          s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+          s.onload = resolve;
+          s.onerror = reject;
+          document.head.appendChild(s);
+        });
+      }
+
+      const canvas = await html2canvas(card, {
+        width: 1200,
+        height: 630,
+        scale: 1,
+        useCORS: true,
+        backgroundColor: null,
+        logging: false,
+      });
+
+      const link = document.createElement('a');
+      link.download = 'og-image.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+
+      btn.textContent = 'Download og-image.png';
+      btn.disabled = false;
+    }
+  </script>
+</body>
+</html>
