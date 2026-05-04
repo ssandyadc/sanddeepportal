@@ -160,7 +160,7 @@ export default function BeginnerProgramPage({ onNavigate }: BeginnerProgramPageP
                 Enroll Now <ArrowRight size={18} />
               </button>
               <a
-                href="https://wa.me/919100011053?text=Hi%2C%20I%20want%20to%20join%20the%2030-Day%20GeM%20Program"
+                href="https://wa.me/918520082707?text=Hi%2C%20I%20want%20to%20join%20the%2030-Day%20GeM%20Program"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-400 text-white font-bold px-7 py-3.5 rounded-xl flex items-center gap-2 transition-colors"
@@ -387,7 +387,7 @@ export default function BeginnerProgramPage({ onNavigate }: BeginnerProgramPageP
               Enroll in 30-Day Program <ArrowRight size={18} />
             </button>
             <a
-              href="https://wa.me/919100011053?text=Hi%2C%20I%20want%20to%20join%20the%2030-Day%20GeM%20Beginner%20Program"
+              href="https://wa.me/918520082707?text=Hi%2C%20I%20want%20to%20join%20the%2030-Day%20GeM%20Beginner%20Program"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-400 text-white font-bold px-7 py-3.5 rounded-xl flex items-center gap-2 transition-colors"
@@ -395,7 +395,7 @@ export default function BeginnerProgramPage({ onNavigate }: BeginnerProgramPageP
               <MessageCircle size={18} /> Chat on WhatsApp
             </a>
             <a
-              href="tel:9100011053"
+              href="tel:8520082707"
               className="border-2 border-white/40 hover:border-white text-white font-bold px-7 py-3.5 rounded-xl flex items-center gap-2 transition-all"
             >
               <Phone size={18} /> Call Now

@@ -183,7 +183,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 <ArrowRight size={18} />
               </button>
               <a
-                href="https://wa.me/919100011053?text=Hi%2C%20I%20want%20to%20know%20more%20about%20GeM%20registration"
+                href="https://wa.me/918520082707?text=Hi%2C%20I%20want%20to%20know%20more%20about%20GeM%20registration"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-400 text-white font-bold px-7 py-3.5 rounded-xl text-base transition-all duration-200 shadow-lg flex items-center gap-2"
@@ -433,7 +433,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               Get Free Consultation <ArrowRight size={18} />
             </button>
             <a
-              href="https://wa.me/919100011053?text=Hi%2C%20I%20want%20to%20start%20selling%20on%20GeM"
+              href="https://wa.me/918520082707?text=Hi%2C%20I%20want%20to%20start%20selling%20on%20GeM"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-400 text-white font-bold px-7 py-3.5 rounded-xl transition-all duration-200 flex items-center gap-2"
@@ -441,7 +441,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               <MessageCircle size={18} /> WhatsApp Now
             </a>
             <a
-              href="tel:9100011053"
+              href="tel:8520082707"
               className="border-2 border-white/40 hover:border-white text-white font-bold px-7 py-3.5 rounded-xl transition-all duration-200 flex items-center gap-2"
             >
               <Phone size={18} /> Call Us

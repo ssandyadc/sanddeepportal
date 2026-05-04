@@ -27,7 +27,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             </p>
             <div className="mt-4 flex gap-3">
               <a
-                href="https://wa.me/919100011053"
+                href="https://wa.me/918520082707"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 bg-green-600 hover:bg-green-500 rounded-lg flex items-center justify-center transition-colors"
@@ -35,7 +35,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 <MessageCircle size={16} className="text-white" />
               </a>
               <a
-                href="tel:9100011053"
+                href="tel:8520082707"
                 className="w-9 h-9 bg-blue-600 hover:bg-blue-500 rounded-lg flex items-center justify-center transition-colors"
               >
                 <Phone size={16} className="text-white" />
@@ -85,14 +85,14 @@ export default function Footer({ onNavigate }: FooterProps) {
             <ul className="space-y-3">
               <li className="flex items-start gap-2.5">
                 <Phone size={15} className="mt-0.5 text-blue-400 shrink-0" />
-                <a href="tel:9100011053" className="text-sm text-gray-400 hover:text-white transition-colors">
-                  9100011053
+                <a href="tel:8520082707" className="text-sm text-gray-400 hover:text-white transition-colors">
+                  8520082707
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
                 <MessageCircle size={15} className="mt-0.5 text-green-400 shrink-0" />
                 <a
-                  href="https://wa.me/919100011053"
+                  href="https://wa.me/918520082707"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-gray-400 hover:text-white transition-colors"
@@ -102,8 +102,8 @@ export default function Footer({ onNavigate }: FooterProps) {
               </li>
               <li className="flex items-start gap-2.5">
                 <Mail size={15} className="mt-0.5 text-blue-400 shrink-0" />
-                <a href="mailto:sanuraproducts@gmail.com" className="text-sm text-gray-400 hover:text-white transition-colors break-all">
-                  sanuraproducts@gmail.com
+                <a href="mailto:ssandyadc@gmail.com" className="text-sm text-gray-400 hover:text-white transition-colors break-all">
+                  ssandyadc@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-2.5">

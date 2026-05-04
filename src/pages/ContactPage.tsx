@@ -85,7 +85,7 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
               <div className="space-y-4">
                 {/* Phone */}
                 <a
-                  href="tel:9100011053"
+                  href="tel:8520082707"
                   className="flex items-start gap-4 bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow group"
                 >
                   <div className="w-11 h-11 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
@@ -93,14 +93,14 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
                   </div>
                   <div>
                     <p className="font-bold text-gray-800 text-sm">Call Us</p>
-                    <p className="text-blue-600 font-semibold">9100011053</p>
+                    <p className="text-blue-600 font-semibold">8520082707</p>
                     <p className="text-xs text-gray-400">Mon–Sat, 9 AM – 7 PM</p>
                   </div>
                 </a>
 
                 {/* WhatsApp */}
                 <a
-                  href="https://wa.me/919100011053?text=Hi%2C%20I%20want%20to%20start%20selling%20on%20GeM.%20Please%20guide%20me."
+                  href="https://wa.me/918520082707?text=Hi%2C%20I%20want%20to%20start%20selling%20on%20GeM.%20Please%20guide%20me."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-4 bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow group"
@@ -117,7 +117,7 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
 
                 {/* Email */}
                 <a
-                  href="mailto:sanuraproducts@gmail.com"
+                  href="mailto:ssandyadc@gmail.com"
                   className="flex items-start gap-4 bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow group"
                 >
                   <div className="w-11 h-11 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:text-white transition-colors">
@@ -125,7 +125,7 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
                   </div>
                   <div>
                     <p className="font-bold text-gray-800 text-sm">Email Us</p>
-                    <p className="text-amber-600 font-semibold text-sm break-all">sanuraproducts@gmail.com</p>
+                    <p className="text-amber-600 font-semibold text-sm break-all">ssandyadc@gmail.com</p>
                     <p className="text-xs text-gray-400">Response within 24 hours</p>
                   </div>
                 </a>
@@ -151,13 +151,13 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
                 <p className="text-blue-200 text-sm mb-4">Call or WhatsApp us right now for instant guidance.</p>
                 <div className="flex gap-3">
                   <a
-                    href="tel:9100011053"
+                    href="tel:8520082707"
                     className="flex-1 bg-white text-blue-700 font-bold py-2.5 rounded-lg text-sm text-center hover:bg-blue-50 transition-colors"
                   >
                     Call Now
                   </a>
                   <a
-                    href="https://wa.me/919100011053"
+                    href="https://wa.me/918520082707"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 bg-green-500 hover:bg-green-400 text-white font-bold py-2.5 rounded-lg text-sm text-center transition-colors"
@@ -187,7 +187,7 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
                         Thank you! Our team will contact you within 2 hours. For immediate help, WhatsApp us now.
                       </p>
                       <a
-                        href="https://wa.me/919100011053?text=Hi%2C%20I%20just%20submitted%20an%20enquiry%20on%20your%20website."
+                        href="https://wa.me/918520082707?text=Hi%2C%20I%20just%20submitted%20an%20enquiry%20on%20your%20website."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-400 text-white font-bold px-6 py-3 rounded-xl transition-colors"
@@ -319,13 +319,13 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
             <p className="text-gray-400 text-sm">By appointment only. Call or WhatsApp to schedule a visit.</p>
             <div className="mt-4 flex flex-wrap justify-center gap-4">
               <a
-                href="tel:9100011053"
+                href="tel:8520082707"
                 className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-colors"
               >
                 <Phone size={15} /> Book Appointment
               </a>
               <a
-                href="https://wa.me/919100011053?text=Hi%2C%20I%20want%20to%20visit%20your%20office.%20Please%20help%20me%20schedule."
+                href="https://wa.me/918520082707?text=Hi%2C%20I%20want%20to%20visit%20your%20office.%20Please%20help%20me%20schedule."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-colors"

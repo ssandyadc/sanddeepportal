@@ -283,13 +283,13 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="tel:9100011053"
+              href="tel:8520082707"
               className="bg-blue-600 hover:bg-blue-500 text-white font-black px-7 py-3.5 rounded-xl flex items-center gap-2 transition-colors"
             >
-              <Phone size={18} /> Call: 9100011053
+              <Phone size={18} /> Call: 8520082707
             </a>
             <a
-              href="https://wa.me/919100011053?text=Hi%2C%20I%20want%20to%20know%20about%20GeM%20pricing%20plans"
+              href="https://wa.me/918520082707?text=Hi%2C%20I%20want%20to%20know%20about%20GeM%20pricing%20plans"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-400 text-white font-bold px-7 py-3.5 rounded-xl flex items-center gap-2 transition-colors"

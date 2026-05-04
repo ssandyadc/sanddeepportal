@@ -65,11 +65,11 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
           <a
-            href="tel:9100011053"
+            href="tel:8520082707"
             className="flex items-center gap-1.5 text-sm font-semibold text-blue-700 hover:text-blue-900 transition-colors"
           >
             <Phone size={15} />
-            9100011053
+            8520082707
           </a>
           <button
             onClick={() => handleNav('contact')}
@@ -106,10 +106,10 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
           ))}
           <div className="pt-2 border-t border-gray-100 mt-1 flex flex-col gap-2">
             <a
-              href="tel:9100011053"
+              href="tel:8520082707"
               className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-blue-700"
             >
-              <Phone size={15} /> 9100011053
+              <Phone size={15} /> 8520082707
             </a>
             <button
               onClick={() => handleNav('contact')}
