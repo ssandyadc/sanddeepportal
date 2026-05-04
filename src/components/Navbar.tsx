@@ -64,18 +64,19 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
-          <a
-            href="tel:8520082707"
-            className="flex items-center gap-1.5 text-sm font-semibold text-blue-700 hover:text-blue-900 transition-colors"
-          >
-            <Phone size={15} />
-            8520082707
-          </a>
           <button
             onClick={() => handleNav('contact')}
-            className="bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold px-4 py-2 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"
+            className="bg-amber-500 hover:bg-amber-600 text-white rounded-lg transition-all duration-200 shadow-sm hover:shadow-md px-4 py-1.5 text-left"
           >
-            Get Free Consultation
+            <p className="text-sm font-bold leading-tight">Get Free Consultation</p>
+            <a
+              href="tel:8520082707"
+              onClick={(e) => e.stopPropagation()}
+              className="flex items-center gap-1 text-xs font-semibold text-amber-100 hover:text-white transition-colors leading-tight mt-0.5"
+            >
+              <Phone size={11} />
+              8520082707
+            </a>
           </button>
         </div>
 
@@ -104,18 +105,20 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
               {link.label}
             </button>
           ))}
-          <div className="pt-2 border-t border-gray-100 mt-1 flex flex-col gap-2">
-            <a
-              href="tel:8520082707"
-              className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-blue-700"
-            >
-              <Phone size={15} /> 8520082707
-            </a>
+          <div className="pt-2 border-t border-gray-100 mt-1">
             <button
               onClick={() => handleNav('contact')}
-              className="bg-amber-500 text-white font-bold px-4 py-2.5 rounded-lg text-sm"
+              className="w-full bg-amber-500 text-white rounded-lg px-4 py-2.5 text-left"
             >
-              Get Free Consultation
+              <p className="text-sm font-bold leading-tight">Get Free Consultation</p>
+              <a
+                href="tel:8520082707"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center gap-1 text-xs font-semibold text-amber-100 hover:text-white transition-colors leading-tight mt-0.5"
+              >
+                <Phone size={11} />
+                8520082707
+              </a>
             </button>
           </div>
         </div>
