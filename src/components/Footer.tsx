@@ -4,10 +4,18 @@ interface FooterProps {
   onNavigate: (page: string) => void;
 }
 
+const footerLinks = [
+  { id: 'home', label: 'Home', href: '/' },
+  { id: 'services', label: 'Our Services', href: '/services' },
+  { id: 'program', label: '30-Day Program', href: '/program' },
+  { id: 'pricing', label: 'Pricing Plans', href: '/pricing' },
+  { id: 'contact', label: 'Contact Us', href: '/contact' },
+];
+
 export default function Footer({ onNavigate }: FooterProps) {
-  const handleNav = (page: string) => {
+  const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, page: string) => {
+    e.preventDefault();
     onNavigate(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -47,20 +55,15 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div>
             <h4 className="text-white font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {[
-                { id: 'home', label: 'Home' },
-                { id: 'services', label: 'Our Services' },
-                { id: 'program', label: '30-Day Program' },
-                { id: 'pricing', label: 'Pricing Plans' },
-                { id: 'contact', label: 'Contact Us' },
-              ].map((link) => (
+              {footerLinks.map((link) => (
                 <li key={link.id}>
-                  <button
-                    onClick={() => handleNav(link.id)}
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleNav(e, link.id)}
                     className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
                   >
                     {link.label}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>

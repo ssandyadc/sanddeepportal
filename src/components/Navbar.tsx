@@ -7,12 +7,12 @@ interface NavbarProps {
 }
 
 const navLinks = [
-  { id: 'home', label: 'Home' },
-  { id: 'services', label: 'Services' },
-  { id: 'category', label: 'Catalog Intel' },
-  { id: 'program', label: '30-Day Program' },
-  { id: 'pricing', label: 'Pricing' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'home', label: 'Home', href: '/' },
+  { id: 'services', label: 'Services', href: '/services' },
+  { id: 'category', label: 'Catalog Intel', href: '/catalog-intel' },
+  { id: 'program', label: '30-Day Program', href: '/program' },
+  { id: 'pricing', label: 'Pricing', href: '/pricing' },
+  { id: 'contact', label: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar({ activePage, onNavigate }: NavbarProps) {
@@ -25,10 +25,10 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNav = (page: string) => {
+  const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, page: string) => {
+    e.preventDefault();
     onNavigate(page);
     setMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -39,19 +39,20 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
     >
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
-        <button onClick={() => handleNav('home')} className="flex items-center gap-2 group">
+        <a href="/" onClick={(e) => handleNav(e, 'home')} className="flex items-center gap-2 group">
           <div className="text-left">
             <p className="font-black text-blue-800 text-base leading-none">Gem Portal Assist</p>
             <p className="text-xs text-gray-500 leading-none">Expert Consultancy</p>
           </div>
-        </button>
+        </a>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
-            <button
+            <a
               key={link.id}
-              onClick={() => handleNav(link.id)}
+              href={link.href}
+              onClick={(e) => handleNav(e, link.id)}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                 link.id === 'category'
                   ? activePage === 'category'
@@ -63,26 +64,26 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
               }`}
             >
               {link.label}
-            </button>
+            </a>
           ))}
         </div>
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
-          <button
-            onClick={() => handleNav('contact')}
+          <a
+            href="/contact"
+            onClick={(e) => handleNav(e, 'contact')}
             className="bg-amber-500 hover:bg-amber-600 text-white rounded-lg transition-all duration-200 shadow-sm hover:shadow-md px-4 py-1.5 text-left"
           >
             <p className="text-sm font-bold leading-tight">Get Free Consultation</p>
-            <a
-              href="tel:8520082707"
+            <span
               onClick={(e) => e.stopPropagation()}
               className="flex items-center gap-1 text-xs font-semibold text-amber-100 hover:text-white transition-colors leading-tight mt-0.5"
             >
               <Phone size={11} />
-              8520082707
-            </a>
-          </button>
+              <a href="tel:8520082707" onClick={(e) => e.stopPropagation()}>8520082707</a>
+            </span>
+          </a>
         </div>
 
         {/* Mobile menu toggle */}
@@ -98,9 +99,10 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 shadow-lg px-4 py-3 flex flex-col gap-1">
           {navLinks.map((link) => (
-            <button
+            <a
               key={link.id}
-              onClick={() => handleNav(link.id)}
+              href={link.href}
+              onClick={(e) => handleNav(e, link.id)}
               className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                 link.id === 'category'
                   ? activePage === 'category'
@@ -112,23 +114,20 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
               }`}
             >
               {link.label}
-            </button>
+            </a>
           ))}
           <div className="pt-2 border-t border-gray-100 mt-1">
-            <button
-              onClick={() => handleNav('contact')}
-              className="w-full bg-amber-500 text-white rounded-lg px-4 py-2.5 text-left"
+            <a
+              href="/contact"
+              onClick={(e) => handleNav(e, 'contact')}
+              className="block w-full bg-amber-500 text-white rounded-lg px-4 py-2.5"
             >
               <p className="text-sm font-bold leading-tight">Get Free Consultation</p>
-              <a
-                href="tel:8520082707"
-                onClick={(e) => e.stopPropagation()}
-                className="flex items-center gap-1 text-xs font-semibold text-amber-100 hover:text-white transition-colors leading-tight mt-0.5"
-              >
+              <span className="flex items-center gap-1 text-xs font-semibold text-amber-100 leading-tight mt-0.5">
                 <Phone size={11} />
-                8520082707
-              </a>
-            </button>
+                <a href="tel:8520082707" onClick={(e) => e.stopPropagation()}>8520082707</a>
+              </span>
+            </a>
           </div>
         </div>
       )}

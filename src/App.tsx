@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MessageCircle } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -7,33 +7,70 @@ import ServicesPage from './pages/ServicesPage';
 import BeginnerProgramPage from './pages/BeginnerProgramPage';
 import PricingPage from './pages/PricingPage';
 import ContactPage from './pages/ContactPage';
-import CategoryIntelligencePage from './pagescatalog catalog ';
+import CategoryIntelligencePage from './pages/CategoryIntelligencePage';
 
 type Page = 'home' | 'services' | 'program' | 'pricing' | 'contact' | 'category';
 
+const pathToPage: Record<string, Page> = {
+  '/': 'home',
+  '/services': 'services',
+  '/program': 'program',
+  '/pricing': 'pricing',
+  '/contact': 'contact',
+  '/catalog-intel': 'category',
+};
+
+const pageToPath: Record<Page, string> = {
+  home: '/',
+  services: '/services',
+  program: '/program',
+  pricing: '/pricing',
+  contact: '/contact',
+  category: '/catalog-intel',
+};
+
+function getPageFromPath(path: string): Page {
+  return pathToPage[path] ?? 'home';
+}
+
 export default function App() {
-  const [activePage, setActivePage] = useState<Page>('home');
+  const [activePage, setActivePage] = useState<Page>(() =>
+    getPageFromPath(window.location.pathname)
+  );
+
+  useEffect(() => {
+    const onPopState = () => setActivePage(getPageFromPath(window.location.pathname));
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+
+  const navigate = (page: Page | string) => {
+    const p = page as Page;
+    const path = pageToPath[p] ?? '/';
+    window.history.pushState(null, '', path);
+    setActivePage(p);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const renderPage = () => {
     switch (activePage) {
-      case 'home': return <HomePage onNavigate={setActivePage} />;
-      case 'services': return <ServicesPage onNavigate={setActivePage} />;
-      case 'program': return <BeginnerProgramPage onNavigate={setActivePage} />;
-      case 'pricing': return <PricingPage onNavigate={setActivePage} />;
-      case 'contact': return <ContactPage onNavigate={setActivePage} />;
-      case 'category': return <CategoryIntelligencePage onNavigate={setActivePage} />;
+      case 'home': return <HomePage onNavigate={navigate} />;
+      case 'services': return <ServicesPage onNavigate={navigate} />;
+      case 'program': return <BeginnerProgramPage onNavigate={navigate} />;
+      case 'pricing': return <PricingPage onNavigate={navigate} />;
+      case 'contact': return <ContactPage onNavigate={navigate} />;
+      case 'category': return <CategoryIntelligencePage onNavigate={navigate} />;
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar activePage={activePage} onNavigate={setActivePage} />
+      <Navbar activePage={activePage} onNavigate={navigate} />
       <main className="flex-1">
         {renderPage()}
       </main>
-      <Footer onNavigate={setActivePage} />
+      <Footer onNavigate={navigate} />
 
-      {/* Floating WhatsApp button */}
       <a
         href="https://wa.me/918520082707?text=Hi%2C%20I%20want%20to%20know%20more%20about%20GeM%20registration%20and%20services."
         target="_blank"
