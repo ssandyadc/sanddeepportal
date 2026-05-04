@@ -22,7 +22,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               </div>
               <div>
                 <p className="font-black text-white text-base leading-none">Gem Portal Assist</p>
-                <p className="text-xs text-gray-400 leading-none">GeM Consultancy</p>
+                <p className="text-xs text-gray-400 leading-none">Expert Consultancy</p>
               </div>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed">
