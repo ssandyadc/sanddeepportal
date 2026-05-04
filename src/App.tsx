@@ -7,8 +7,9 @@ import ServicesPage from './pages/ServicesPage';
 import BeginnerProgramPage from './pages/BeginnerProgramPage';
 import PricingPage from './pages/PricingPage';
 import ContactPage from './pages/ContactPage';
+import CategoryIntelligencePage from './pages/CategoryIntelligencePage';
 
-type Page = 'home' | 'services' | 'program' | 'pricing' | 'contact';
+type Page = 'home' | 'services' | 'program' | 'pricing' | 'contact' | 'category';
 
 export default function App() {
   const [activePage, setActivePage] = useState<Page>('home');
@@ -20,6 +21,7 @@ export default function App() {
       case 'program': return <BeginnerProgramPage onNavigate={setActivePage} />;
       case 'pricing': return <PricingPage onNavigate={setActivePage} />;
       case 'contact': return <ContactPage onNavigate={setActivePage} />;
+      case 'category': return <CategoryIntelligencePage onNavigate={setActivePage} />;
     }
   };
 

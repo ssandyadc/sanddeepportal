@@ -9,6 +9,7 @@ interface NavbarProps {
 const navLinks = [
   { id: 'home', label: 'Home' },
   { id: 'services', label: 'Services' },
+  { id: 'category', label: 'Category Intel' },
   { id: 'program', label: '30-Day Program' },
   { id: 'pricing', label: 'Pricing' },
   { id: 'contact', label: 'Contact' },
