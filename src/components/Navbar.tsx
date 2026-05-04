@@ -43,7 +43,7 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
             <span className="text-white font-black text-sm">G</span>
           </div>
           <div className="text-left">
-            <p className="font-black text-blue-800 text-base leading-none">GemPro5IT</p>
+            <p className="font-black text-blue-800 text-base leading-none">Gem Portal Assist</p>
             <p className="text-xs text-gray-500 leading-none">GeM Consultancy</p>
           </div>
         </button>

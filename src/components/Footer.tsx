@@ -21,7 +21,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 <span className="text-white font-black text-sm">G</span>
               </div>
               <div>
-                <p className="font-black text-white text-base leading-none">GemPro5IT</p>
+                <p className="font-black text-white text-base leading-none">Gem Portal Assist</p>
                 <p className="text-xs text-gray-400 leading-none">GeM Consultancy</p>
               </div>
             </div>
@@ -123,7 +123,7 @@ export default function Footer({ onNavigate }: FooterProps) {
       <div className="border-t border-gray-800 py-5">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-2">
           <p className="text-xs text-gray-500">
-            &copy; {new Date().getFullYear()} GemPortalAssist. All rights reserved.
+            &copy; {new Date().getFullYear()} Gem Portal Assist. All rights reserved.
           </p>
           <p className="text-xs text-gray-500">
             Domain: <span className="text-gray-400">GemPortalAssist.com</span>
