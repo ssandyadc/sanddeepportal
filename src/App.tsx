@@ -7,7 +7,7 @@ import ServicesPage from './pages/ServicesPage';
 import BeginnerProgramPage from './pages/BeginnerProgramPage';
 import PricingPage from './pages/PricingPage';
 import ContactPage from './pages/ContactPage';
-import CategoryIntelligencePage from './pages/CategoryIntelligencePage';
+import CategoryIntelligencePage from './pagescatalog catalog ';
 
 type Page = 'home' | 'services' | 'program' | 'pricing' | 'contact' | 'category';
 
