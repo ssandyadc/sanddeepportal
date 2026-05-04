@@ -39,8 +39,8 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
         <button onClick={() => handleNav('home')} className="flex items-center gap-2 group">
-          <div className="w-9 h-9 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center shadow-sm">
-            <span className="text-white font-black text-sm">G</span>
+          <div className="w-9 h-9 bg-gradient-to-br from-orange-400 to-orange-600 rounded-lg flex items-center justify-center shadow-sm">
+            <span className="text-white font-black text-xs tracking-tight">GPA</span>
           </div>
           <div className="text-left">
             <p className="font-black text-blue-800 text-base leading-none">Gem Portal Assist</p>

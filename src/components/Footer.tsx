@@ -17,8 +17,8 @@ export default function Footer({ onNavigate }: FooterProps) {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center">
-                <span className="text-white font-black text-sm">G</span>
+              <div className="w-9 h-9 bg-gradient-to-br from-orange-400 to-orange-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-black text-xs tracking-tight">GPA</span>
               </div>
               <div>
                 <p className="font-black text-white text-base leading-none">Gem Portal Assist</p>
