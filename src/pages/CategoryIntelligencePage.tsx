@@ -82,9 +82,11 @@ export default function CategoryIntelligencePage({ onNavigate }: CategoryIntelli
 
   const handleSampleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/sample-category-analysis.xlsx';
+    link.href = '/sample_file_2026.xlsx';
     link.download = 'GemPortalAssist-Sample-Category-Analysis.xlsx';
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
   };
 
   return (
