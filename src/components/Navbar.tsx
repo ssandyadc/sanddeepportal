@@ -9,7 +9,7 @@ interface NavbarProps {
 const navLinks = [
   { id: 'home', label: 'Home' },
   { id: 'services', label: 'Services' },
-  { id: 'category', label: 'Catalogue Intela' },
+  { id: 'category', label: 'Catalog Intel' },
   { id: 'program', label: '30-Day Program' },
   { id: 'pricing', label: 'Pricing' },
   { id: 'contact', label: 'Contact' },
@@ -55,8 +55,8 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                 link.id === 'category'
                   ? activePage === 'category'
-                    ? 'bg-amber-500 text-white shadow-md shadow-amber-200 ring-2 ring-amber-400 ring-offset-1'
-                    : 'bg-amber-400 text-white font-bold hover:bg-amber-500 shadow-sm shadow-amber-200 ring-1 ring-amber-300'
+                    ? 'bg-emerald-600 text-white shadow-md shadow-emerald-200 ring-2 ring-emerald-400 ring-offset-1'
+                    : 'bg-emerald-500 text-white font-bold hover:bg-emerald-600 shadow-sm shadow-emerald-200 ring-1 ring-emerald-400 animate-pulse'
                   : activePage === link.id
                   ? 'bg-blue-600 text-white'
                   : 'text-gray-700 hover:bg-blue-50 hover:text-blue-700'
@@ -104,8 +104,8 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
               className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                 link.id === 'category'
                   ? activePage === 'category'
-                    ? 'bg-amber-500 text-white font-bold'
-                    : 'bg-amber-400 text-white font-bold hover:bg-amber-500'
+                    ? 'bg-emerald-600 text-white font-bold'
+                    : 'bg-emerald-500 text-white font-bold hover:bg-emerald-600'
                   : activePage === link.id
                   ? 'bg-blue-600 text-white'
                   : 'text-gray-700 hover:bg-blue-50'
