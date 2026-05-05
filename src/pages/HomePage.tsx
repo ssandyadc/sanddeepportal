@@ -19,10 +19,10 @@ interface HomePageProps {
 }
 
 const stats = [
-  { value: '500+', label: 'Sellers Registered' },
-  { value: '30', label: 'Days to First Order' },
-  { value: '95%', label: 'Success Rate' },
-  { value: '8+', label: 'Years Experience' },
+  { value: '25+', label: 'Sellers Registered' },
+  { value: '300+', label: 'Contracts Delivered' },
+  { value: '99%', label: 'Success Rate' },
+  { value: 'June 2025', label: 'In Business Since' },
 ];
 
 const audiences = [
@@ -164,7 +164,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/40 rounded-full px-4 py-1.5 mb-6">
               <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
-              <span className="text-amber-300 text-sm font-medium">Trusted by 500+ GeM Sellers Across India</span>
+              <span className="text-amber-300 text-sm font-medium">25+ Sellers Registered · 300+ Contracts Delivered · 99% Success Rate</span>
             </div>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-5">
               Start Your GeM Seller Journey
