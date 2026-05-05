@@ -6,12 +6,12 @@ interface PricingPageProps {
 
 const plans = [
   {
-    id: 'starter',
-    name: 'Starter Plan',
+    id: 'basic',
+    name: 'Basic Plan',
     tagline: 'Just Getting Started',
     badge: null,
-    price: 'Get Quote',
-    priceNote: 'Call for exact pricing',
+    price: '₹2,500',
+    priceNote: 'Offer price (MRP ₹5,000)',
     color: 'border-gray-200',
     headerBg: 'bg-gray-50',
     buttonBg: 'bg-blue-600 hover:bg-blue-700',
@@ -36,20 +36,21 @@ const plans = [
     name: 'Growth Plan',
     tagline: 'List & Get Visible',
     badge: null,
-    price: 'Get Quote',
-    priceNote: 'Call for exact pricing',
+    price: '₹7,500',
+    priceNote: 'Offer price (MRP ₹10,000)',
     color: 'border-blue-200',
     headerBg: 'bg-blue-50',
     buttonBg: 'bg-blue-600 hover:bg-blue-700',
     badgeBg: null,
     features: [
-      'Everything in Starter',
+      'Everything in Basic',
       'Product catalog listing (5 products)',
       'Catalog optimization',
       'Category selection guidance',
       'Basic pricing strategy',
       'Compliance document checklist',
       'WhatsApp support for 15 days',
+      'Additional 5 products @ ₹2,500',
     ],
     notIncluded: [
       'Bid participation',
@@ -63,21 +64,19 @@ const plans = [
     name: 'Professional Plan',
     tagline: 'Register + Bid + Win',
     badge: 'Popular',
-    price: 'Get Quote',
-    priceNote: 'Call for exact pricing',
+    price: '₹15,000',
+    priceNote: 'Offer price (MRP ₹20,000)',
     color: 'border-amber-400',
     headerBg: 'bg-gradient-to-br from-amber-50 to-amber-100',
     buttonBg: 'bg-amber-500 hover:bg-amber-600',
     badgeBg: 'bg-amber-400 text-white',
     features: [
       'Everything in Growth',
-      'Product listing (up to 10 products)',
+      'Product listing (up to 20 products)',
       'Full compliance & document setup',
-      'Authorization & undertakings',
       'Bid participation training',
       'L1 price strategy',
-      'Reverse auction support',
-      'WhatsApp support for 30 days',
+      'WhatsApp support for 45 days',
       'Weekly review calls',
     ],
     notIncluded: [
@@ -146,7 +145,7 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
             Choose the plan that fits your needs. All plans include expert GeM consultancy from our experienced team.
           </p>
           <p className="text-amber-300 font-semibold">
-            Call or WhatsApp for exact pricing — customized to your business needs.
+            Limited-time offer prices available now. Contact us to get started today.
           </p>
         </div>
       </section>
@@ -231,7 +230,7 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
           </div>
 
           <p className="text-center text-sm text-gray-500 mt-8">
-            All prices are customized based on your specific business needs. Contact us for a free consultation and exact quote.
+            Offer prices are limited-time. Contact us for free consultation and to avail the best rate for your business.
           </p>
         </div>
       </section>
