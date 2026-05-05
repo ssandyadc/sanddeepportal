@@ -8,17 +8,23 @@ import BeginnerProgramPage from './pages/BeginnerProgramPage';
 import PricingPage from './pages/PricingPage';
 import ContactPage from './pages/ContactPage';
 import CategoryIntelligencePage from './pages/CategoryIntelligencePage';
+import BlogPage from './pages/BlogPage';
+import BlogAdminPage from './pages/BlogAdminPage';
 
-type Page = 'home' | 'services' | 'program' | 'pricing' | 'contact' | 'category';
+type Page = 'home' | 'services' | 'program' | 'pricing' | 'contact' | 'category' | 'blog' | 'blog-admin';
 
-const pathToPage: Record<string, Page> = {
-  '/': 'home',
-  '/services': 'services',
-  '/program': 'program',
-  '/pricing': 'pricing',
-  '/contact': 'contact',
-  '/catalog-intel': 'category',
-};
+function getPageFromPath(path: string): { page: Page; slug?: string } {
+  if (path === '/') return { page: 'home' };
+  if (path === '/services') return { page: 'services' };
+  if (path === '/program') return { page: 'program' };
+  if (path === '/pricing') return { page: 'pricing' };
+  if (path === '/contact') return { page: 'contact' };
+  if (path === '/catalog-intel') return { page: 'category' };
+  if (path === '/blog/admin') return { page: 'blog-admin' };
+  if (path === '/blog') return { page: 'blog' };
+  if (path.startsWith('/blog/')) return { page: 'blog', slug: path.slice(6) };
+  return { page: 'home' };
+}
 
 const pageToPath: Record<Page, string> = {
   home: '/',
@@ -27,30 +33,38 @@ const pageToPath: Record<Page, string> = {
   pricing: '/pricing',
   contact: '/contact',
   category: '/catalog-intel',
+  blog: '/blog',
+  'blog-admin': '/blog/admin',
 };
-
-function getPageFromPath(path: string): Page {
-  return pathToPage[path] ?? 'home';
-}
 
 export default function App() {
   const [activePage, setActivePage] = useState<Page>(() =>
-    getPageFromPath(window.location.pathname)
+    getPageFromPath(window.location.pathname).page
+  );
+  const [blogSlug, setBlogSlug] = useState<string | undefined>(() =>
+    getPageFromPath(window.location.pathname).slug
   );
 
   useEffect(() => {
-    const onPopState = () => setActivePage(getPageFromPath(window.location.pathname));
+    const onPopState = () => {
+      const { page, slug } = getPageFromPath(window.location.pathname);
+      setActivePage(page);
+      setBlogSlug(slug);
+    };
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
-  const navigate = (page: Page | string) => {
+  const navigate = (page: string) => {
     const p = page as Page;
     const path = pageToPath[p] ?? '/';
     window.history.pushState(null, '', path);
     setActivePage(p);
+    setBlogSlug(undefined);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const hideBlogChrome = activePage === 'blog-admin';
 
   const renderPage = () => {
     switch (activePage) {
@@ -60,6 +74,8 @@ export default function App() {
       case 'pricing': return <PricingPage onNavigate={navigate} />;
       case 'contact': return <ContactPage onNavigate={navigate} />;
       case 'category': return <CategoryIntelligencePage onNavigate={navigate} />;
+      case 'blog': return <BlogPage onNavigate={navigate} initialSlug={blogSlug} />;
+      case 'blog-admin': return <BlogAdminPage />;
     }
   };
 
@@ -69,7 +85,7 @@ export default function App() {
       <main className="flex-1">
         {renderPage()}
       </main>
-      <Footer onNavigate={navigate} />
+      {!hideBlogChrome && <Footer onNavigate={navigate} />}
 
       <a
         href="https://wa.me/918520082707?text=Hi%2C%20I%20want%20to%20know%20more%20about%20GeM%20registration%20and%20services."

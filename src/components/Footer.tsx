@@ -9,6 +9,7 @@ const footerLinks = [
   { id: 'services', label: 'Our Services', href: '/services' },
   { id: 'program', label: '30-Day Program', href: '/program' },
   { id: 'pricing', label: 'Pricing Plans', href: '/pricing' },
+  { id: 'blog', label: 'Blog', href: '/blog' },
   { id: 'contact', label: 'Contact Us', href: '/contact' },
 ];
 

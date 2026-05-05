@@ -12,6 +12,7 @@ const navLinks = [
   { id: 'category', label: 'Catalog Intel', href: '/catalog-intel' },
   { id: 'program', label: '30-Day Program', href: '/program' },
   { id: 'pricing', label: 'Pricing', href: '/pricing' },
+  { id: 'blog', label: 'Blog', href: '/blog' },
   { id: 'contact', label: 'Contact', href: '/contact' },
 ];
 
