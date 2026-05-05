@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Plus, CreditCard as Edit2, Trash2, Eye, EyeOff, LogOut, Save, X, CheckCircle, AlertCircle, Upload, ImageIcon } from 'lucide-react';
+import { Plus, CreditCard as Edit2, Trash2, Eye, EyeOff, LogOut, Save, X, CheckCircle, AlertCircle, Upload, Image as ImageIcon } from 'lucide-react';
 
 const ADMIN_SECRET = 'gemportalassist2026';
 const CATEGORIES = ['Product News', 'GeM Updates', 'Tips & Tricks', 'Policy Changes', 'General'];
@@ -531,6 +531,3 @@ export default function BlogAdminPage() {
     </div>
   );
 }
-
-
-export default BlogAdminPage
