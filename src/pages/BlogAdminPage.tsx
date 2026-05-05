@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Plus, CreditCard as Edit2, Trash2, Eye, EyeOff, LogOut, Save, X, CheckCircle, AlertCircle } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Plus, CreditCard as Edit2, Trash2, Eye, EyeOff, LogOut, Save, X, CheckCircle, AlertCircle, Upload, ImageIcon } from 'lucide-react';
 
 const ADMIN_SECRET = 'gemportalassist2026';
 const CATEGORIES = ['Product News', 'GeM Updates', 'Tips & Tricks', 'Policy Changes', 'General'];
@@ -54,6 +54,10 @@ function apiHeaders() {
 
 type Toast = { type: 'success' | 'error'; message: string };
 
+function uploadUrl() {
+  return `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/blog-upload`;
+}
+
 export default function BlogAdminPage() {
   const [authed, setAuthed] = useState(false);
   const [password, setPassword] = useState('');
@@ -67,6 +71,8 @@ export default function BlogAdminPage() {
   const [saving, setSaving] = useState(false);
   const [toast, setToast] = useState<Toast | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (authed) fetchPosts();
@@ -140,6 +146,33 @@ export default function BlogAdminPage() {
       }
       return updated;
     });
+  }
+
+  async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append('file', file);
+      const res = await fetch(uploadUrl(), {
+        method: 'POST',
+        headers: {
+          'X-Admin-Secret': ADMIN_SECRET,
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+        },
+        body: fd,
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? 'Upload failed');
+      updateField('cover_image_url', data.url);
+      showToast('success', 'Image uploaded!');
+    } catch {
+      showToast('error', 'Image upload failed. Try again.');
+    } finally {
+      setUploading(false);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+    }
   }
 
   async function savePost() {
@@ -321,14 +354,56 @@ export default function BlogAdminPage() {
                 </select>
               </div>
               <div className="md:col-span-2">
-                <label className="text-xs font-bold text-gray-600 uppercase tracking-wide block mb-1">Cover Image URL</label>
+                <label className="text-xs font-bold text-gray-600 uppercase tracking-wide block mb-1">Cover Image</label>
                 <input
-                  type="url"
-                  value={form.cover_image_url}
-                  onChange={e => updateField('cover_image_url', e.target.value)}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="https://images.pexels.com/..."
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp,image/gif"
+                  className="hidden"
+                  onChange={handleImageUpload}
                 />
+                {form.cover_image_url ? (
+                  <div className="relative group rounded-xl overflow-hidden border border-gray-200 h-44">
+                    <img src={form.cover_image_url} alt="Cover" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                      <button
+                        type="button"
+                        onClick={() => fileInputRef.current?.click()}
+                        disabled={uploading}
+                        className="flex items-center gap-2 bg-white text-gray-900 font-bold text-sm px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+                      >
+                        <Upload size={15} /> {uploading ? 'Uploading...' : 'Replace'}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => updateField('cover_image_url', '')}
+                        className="flex items-center gap-2 bg-red-600 text-white font-bold text-sm px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
+                      >
+                        <X size={15} /> Remove
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    disabled={uploading}
+                    className="w-full h-32 border-2 border-dashed border-gray-300 hover:border-blue-400 rounded-xl flex flex-col items-center justify-center gap-2 text-gray-400 hover:text-blue-600 transition-colors"
+                  >
+                    {uploading ? (
+                      <>
+                        <div className="w-6 h-6 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+                        <span className="text-sm font-medium">Uploading...</span>
+                      </>
+                    ) : (
+                      <>
+                        <ImageIcon size={24} />
+                        <span className="text-sm font-medium">Click to upload cover image</span>
+                        <span className="text-xs">JPG, PNG, WebP up to 5MB</span>
+                      </>
+                    )}
+                  </button>
+                )}
               </div>
               <div className="md:col-span-2">
                 <label className="text-xs font-bold text-gray-600 uppercase tracking-wide block mb-1">Excerpt</label>
@@ -456,3 +531,6 @@ export default function BlogAdminPage() {
     </div>
   );
 }
+
+
+export default BlogAdminPage
