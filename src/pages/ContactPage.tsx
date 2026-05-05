@@ -117,7 +117,7 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
 
                 {/* Email */}
                 <a
-                  href="mailto:ssandyadc@gmail.com"
+                  href="mailto:support@gemportalassist.in"
                   className="flex items-start gap-4 bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow group"
                 >
                   <div className="w-11 h-11 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:text-white transition-colors">
@@ -125,7 +125,7 @@ export default function ContactPage({ onNavigate: _onNavigate }: ContactPageProp
                   </div>
                   <div>
                     <p className="font-bold text-gray-800 text-sm">Email Us</p>
-                    <p className="text-amber-600 font-semibold text-sm break-all">ssandyadc@gmail.com</p>
+                    <p className="text-amber-600 font-semibold text-sm break-all">support@gemportalassist.in</p>
                     <p className="text-xs text-gray-400">Response within 24 hours</p>
                   </div>
                 </a>

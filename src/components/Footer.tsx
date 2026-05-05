@@ -105,8 +105,8 @@ export default function Footer({ onNavigate }: FooterProps) {
               </li>
               <li className="flex items-start gap-2.5">
                 <Mail size={15} className="mt-0.5 text-blue-400 shrink-0" />
-                <a href="mailto:ssandyadc@gmail.com" className="text-sm text-gray-400 hover:text-white transition-colors break-all">
-                  ssandyadc@gmail.com
+                <a href="mailto:support@gemportalassist.in" className="text-sm text-gray-400 hover:text-white transition-colors break-all">
+                  support@gemportalassist.in
                 </a>
               </li>
               <li className="flex items-start gap-2.5">

@@ -436,7 +436,7 @@ export default function CategoryIntelligencePage({ onNavigate }: CategoryIntelli
               <MessageCircle size={16} /> WhatsApp Us
             </a>
             <a
-              href="mailto:ssandyadc@gmail.com"
+              href="mailto:support@gemportalassist.in"
               className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-6 py-3 rounded-xl transition-colors"
             >
               Email Us
