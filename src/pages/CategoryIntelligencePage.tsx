@@ -120,12 +120,14 @@ export default function CategoryIntelligencePage({ onNavigate }: CategoryIntelli
             >
               <Download size={18} /> Download Free Sample Excel
             </button>
-            <button
-              onClick={() => handleNav('contact')}
+            <a
+              href="https://superprofile.bio/vp/gem-category-intelligence-report"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-7 py-3.5 rounded-xl transition-all duration-200"
             >
-              Get Full Report <ArrowRight size={16} />
-            </button>
+              Buy Full Report <ArrowRight size={16} />
+            </a>
           </div>
         </div>
       </section>
@@ -398,12 +400,14 @@ export default function CategoryIntelligencePage({ onNavigate }: CategoryIntelli
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => handleNav('pricing')}
+              <a
+                href="https://superprofile.bio/vp/gem-category-intelligence-report"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-600 text-white font-black px-8 py-4 rounded-xl text-base transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105"
               >
                 Buy Now <ArrowRight size={18} />
-              </button>
+              </a>
               <a
                 href="tel:8520082707"
                 className="flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold px-8 py-4 rounded-xl text-base transition-colors"

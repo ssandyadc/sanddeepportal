@@ -1,4 +1,4 @@
-import { CheckCircle, ArrowRight, MessageCircle, Phone, Star } from 'lucide-react';
+import { CheckCircle, ArrowRight, MessageCircle, Phone, Star, BarChart2, ExternalLink } from 'lucide-react';
 
 interface PricingPageProps {
   onNavigate: (page: string) => void;
@@ -147,6 +147,74 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
           <p className="text-amber-300 font-semibold">
             Limited-time offer prices available now. Contact us to get started today.
           </p>
+        </div>
+      </section>
+
+      {/* Catalog Intelligence Product */}
+      <section className="py-14 bg-white border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-8">
+            <span className="inline-block bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Digital Product — Instant Delivery</span>
+            <h2 className="text-2xl md:text-3xl font-black text-gray-900 mt-3 mb-2">GeM Category Intelligence Report</h2>
+            <p className="text-gray-500 max-w-xl mx-auto">Data-driven category analysis to identify the most profitable products to list on GeM Portal.</p>
+          </div>
+
+          <div className="bg-gradient-to-br from-slate-900 via-blue-950 to-blue-900 rounded-3xl overflow-hidden shadow-2xl">
+            <div className="grid md:grid-cols-2">
+              <div className="p-8 md:p-10">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-amber-400/20 border border-amber-400/30 rounded-xl flex items-center justify-center">
+                    <BarChart2 size={22} className="text-amber-400" />
+                  </div>
+                  <div>
+                    <p className="text-white font-black text-lg leading-tight">Category Intelligence</p>
+                    <p className="text-blue-300 text-xs">Customised for your business</p>
+                  </div>
+                </div>
+                <ul className="space-y-3 mb-6">
+                  {[
+                    'Q1–Q4 category classification for your niche',
+                    'Shortlisted high-opportunity categories',
+                    'Demand vs supply gap analysis',
+                    'Product suggestions within each category',
+                    'GeM-ready catalog strategy',
+                    'Competition level mapping',
+                  ].map((f) => (
+                    <li key={f} className="flex items-start gap-2.5 text-sm text-blue-100">
+                      <CheckCircle size={15} className="text-emerald-400 shrink-0 mt-0.5" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-blue-400 text-xs">Delivered via email / WhatsApp within 24 hours of payment</p>
+              </div>
+
+              <div className="bg-white/5 border-t md:border-t-0 md:border-l border-white/10 p-8 md:p-10 flex flex-col items-center justify-center text-center">
+                <p className="text-blue-300 text-sm font-semibold uppercase tracking-widest mb-2">One-Time Payment</p>
+                <span className="text-5xl font-black text-amber-400">₹999</span>
+                <p className="text-blue-400 text-xs mt-1 mb-8 line-through">MRP ₹2,499</p>
+
+                <a
+                  href="https://superprofile.bio/vp/gem-category-intelligence-report"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-900 font-black px-6 py-4 rounded-xl text-base transition-all duration-200 shadow-lg hover:shadow-amber-400/30 hover:scale-105 mb-3"
+                >
+                  Buy Now <ExternalLink size={16} />
+                </a>
+                <p className="text-blue-400 text-xs mb-6">Secure payment via SuperProfile</p>
+
+                <a
+                  href="https://wa.me/918520082707?text=Hi%2C%20I%20want%20to%20know%20more%20about%20the%20Category%20Intelligence%20Report"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-green-500/20 hover:bg-green-500/30 border border-green-500/40 text-green-300 font-semibold px-4 py-2 rounded-lg text-xs transition-colors"
+                >
+                  <MessageCircle size={14} /> Chat on WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
