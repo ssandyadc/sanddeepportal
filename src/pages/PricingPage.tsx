@@ -192,8 +192,7 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
               <div className="bg-white/5 border-t md:border-t-0 md:border-l border-white/10 p-8 md:p-10 flex flex-col items-center justify-center text-center">
                 <p className="text-blue-300 text-sm font-semibold uppercase tracking-widest mb-2">One-Time Payment</p>
                 <span className="text-5xl font-black text-amber-400">₹3,500</span>
-                <p className="text-blue-400 text-xs mt-1 line-through">MRP ₹5,000</p>
-                <p className="text-emerald-400 text-xs font-semibold mt-1 mb-6">For price negotiation, WhatsApp us</p>
+                <p className="text-blue-400 text-xs mt-1 mb-8 line-through">MRP ₹5,000</p>
 
                 <a
                   href="https://superprofile.bio/vp/gem-category-intelligence-report"
