@@ -10,8 +10,17 @@ import ContactPage from './pages/ContactPage';
 import CategoryIntelligencePage from './pages/CategoryIntelligencePage';
 import BlogPage from './pages/BlogPage';
 import BlogAdminPage from './pages/BlogAdminPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import RefundPolicyPage from './pages/RefundPolicyPage';
+import TermsPage from './pages/TermsPage';
+import ShippingPolicyPage from './pages/ShippingPolicyPage';
+import AboutPage from './pages/AboutPage';
+import DisclaimerPage from './pages/DisclaimerPage';
 
-type Page = 'home' | 'services' | 'program' | 'pricing' | 'contact' | 'category' | 'blog' | 'blog-admin';
+type Page =
+  | 'home' | 'services' | 'program' | 'pricing' | 'contact' | 'category'
+  | 'blog' | 'blog-admin'
+  | 'privacy' | 'refund' | 'terms' | 'shipping' | 'about' | 'disclaimer';
 
 function getPageFromPath(path: string): { page: Page; slug?: string } {
   if (path === '/') return { page: 'home' };
@@ -23,6 +32,12 @@ function getPageFromPath(path: string): { page: Page; slug?: string } {
   if (path === '/blog/admin') return { page: 'blog-admin' };
   if (path === '/blog') return { page: 'blog' };
   if (path.startsWith('/blog/')) return { page: 'blog', slug: path.slice(6) };
+  if (path === '/privacy-policy') return { page: 'privacy' };
+  if (path === '/refund-policy') return { page: 'refund' };
+  if (path === '/terms') return { page: 'terms' };
+  if (path === '/shipping-policy') return { page: 'shipping' };
+  if (path === '/about') return { page: 'about' };
+  if (path === '/disclaimer') return { page: 'disclaimer' };
   return { page: 'home' };
 }
 
@@ -35,6 +50,12 @@ const pageToPath: Record<Page, string> = {
   category: '/catalog-intel',
   blog: '/blog',
   'blog-admin': '/blog/admin',
+  privacy: '/privacy-policy',
+  refund: '/refund-policy',
+  terms: '/terms',
+  shipping: '/shipping-policy',
+  about: '/about',
+  disclaimer: '/disclaimer',
 };
 
 export default function App() {
@@ -76,6 +97,12 @@ export default function App() {
       case 'category': return <CategoryIntelligencePage onNavigate={navigate} />;
       case 'blog': return <BlogPage onNavigate={navigate} initialSlug={blogSlug} />;
       case 'blog-admin': return <BlogAdminPage />;
+      case 'privacy': return <PrivacyPolicyPage />;
+      case 'refund': return <RefundPolicyPage />;
+      case 'terms': return <TermsPage />;
+      case 'shipping': return <ShippingPolicyPage />;
+      case 'about': return <AboutPage />;
+      case 'disclaimer': return <DisclaimerPage />;
     }
   };
 

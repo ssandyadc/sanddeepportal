@@ -4,13 +4,22 @@ interface FooterProps {
   onNavigate: (page: string) => void;
 }
 
-const footerLinks = [
+const quickLinks = [
   { id: 'home', label: 'Home', href: '/' },
   { id: 'services', label: 'Our Services', href: '/services' },
   { id: 'program', label: '30-Day Program', href: '/program' },
   { id: 'pricing', label: 'Pricing Plans', href: '/pricing' },
   { id: 'blog', label: 'Blog', href: '/blog' },
   { id: 'contact', label: 'Contact Us', href: '/contact' },
+  { id: 'about', label: 'About Us', href: '/about' },
+];
+
+const legalLinks = [
+  { id: 'privacy', label: 'Privacy Policy', href: '/privacy-policy' },
+  { id: 'terms', label: 'Terms & Conditions', href: '/terms' },
+  { id: 'refund', label: 'Refund Policy', href: '/refund-policy' },
+  { id: 'shipping', label: 'Shipping & Delivery', href: '/shipping-policy' },
+  { id: 'disclaimer', label: 'Disclaimer', href: '/disclaimer' },
 ];
 
 export default function Footer({ onNavigate }: FooterProps) {
@@ -56,7 +65,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div>
             <h4 className="text-white font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {footerLinks.map((link) => (
+              {quickLinks.map((link) => (
                 <li key={link.id}>
                   <a
                     href={link.href}
@@ -70,16 +79,21 @@ export default function Footer({ onNavigate }: FooterProps) {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Legal */}
           <div>
-            <h4 className="text-white font-bold mb-4">Services</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>GeM Seller Registration</li>
-              <li>Catalog & Product Listing</li>
-              <li>Bid Participation Support</li>
-              <li>Compliance & Documents</li>
-              <li>OEM Panel Setup</li>
-              <li>Account Suspension Help</li>
+            <h4 className="text-white font-bold mb-4">Legal</h4>
+            <ul className="space-y-2">
+              {legalLinks.map((link) => (
+                <li key={link.id}>
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleNav(e, link.id)}
+                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -90,7 +104,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               <li className="flex items-start gap-2.5">
                 <Phone size={15} className="mt-0.5 text-blue-400 shrink-0" />
                 <a href="tel:8520082707" className="text-sm text-gray-400 hover:text-white transition-colors">
-                  8520082707
+                  +91 8520082707
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
@@ -106,8 +120,8 @@ export default function Footer({ onNavigate }: FooterProps) {
               </li>
               <li className="flex items-start gap-2.5">
                 <Mail size={15} className="mt-0.5 text-blue-400 shrink-0" />
-                <a href="mailto:support@gemportalassist.in" className="text-sm text-gray-400 hover:text-white transition-colors break-all">
-                  support@gemportalassist.in
+                <a href="mailto:sales@gemportalassist.in" className="text-sm text-gray-400 hover:text-white transition-colors break-all">
+                  sales@gemportalassist.in
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
@@ -122,13 +136,22 @@ export default function Footer({ onNavigate }: FooterProps) {
       </div>
 
       <div className="border-t border-gray-800 py-5">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-2">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-xs text-gray-500">
             &copy; {new Date().getFullYear()} Gem Portal Assist. All rights reserved.
           </p>
-          <p className="text-xs text-gray-500">
-            Domain: <span className="text-gray-400">GemPortalAssist.in</span>
-          </p>
+          <div className="flex flex-wrap items-center gap-4">
+            {legalLinks.map((link) => (
+              <a
+                key={link.id}
+                href={link.href}
+                onClick={(e) => handleNav(e, link.id)}
+                className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
