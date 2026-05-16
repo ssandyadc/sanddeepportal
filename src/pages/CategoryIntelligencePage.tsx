@@ -80,18 +80,7 @@ export default function CategoryIntelligencePage({ onNavigate }: CategoryIntelli
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleSampleDownload = async () => {
-    const res = await fetch('/sample_file_2026.xlsx');
-    const blob = await res.blob();
-    const url = URL.createObjectURL(new Blob([blob], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'GemPortalAssist-Sample-Category-Analysis.xlsx';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
+  const SAMPLE_URL = 'https://superprofile.bio/lf/6a08ca867c5fcd001369734b';
 
   return (
     <div className="min-h-screen">
@@ -114,12 +103,14 @@ export default function CategoryIntelligencePage({ onNavigate }: CategoryIntelli
             GeM Portal has <strong className="text-white">10,000+ categories.</strong> Most sellers upload random products and get zero orders. We change that.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={handleSampleDownload}
+            <a
+              href={SAMPLE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-900 font-black px-7 py-3.5 rounded-xl transition-all duration-200 shadow-lg hover:shadow-amber-400/30 hover:scale-105"
             >
               <Download size={18} /> Download Free Sample Excel
-            </button>
+            </a>
             <a
               href="https://superprofile.bio/vp/gem-category-intelligence-report"
               target="_blank"
@@ -363,12 +354,14 @@ export default function CategoryIntelligencePage({ onNavigate }: CategoryIntelli
                   </span>
                 ))}
               </div>
-              <button
-                onClick={handleSampleDownload}
+              <a
+                href={SAMPLE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2.5 bg-amber-400 hover:bg-amber-300 text-slate-900 font-black px-8 py-4 rounded-xl text-base transition-all duration-200 shadow-xl hover:shadow-amber-400/30 hover:scale-105"
               >
                 <Download size={20} /> Download Sample Excel
-              </button>
+              </a>
               <p className="text-blue-400 text-xs mt-4">Free download — no registration required</p>
             </div>
           </div>
