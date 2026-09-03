@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { Plus, CreditCard as Edit2, Trash2, Eye, EyeOff, LogOut, Save, X, CheckCircle, AlertCircle, Upload, Image as ImageIcon } from 'lucide-react';
+import { supabase } from '../lib/supabase';
+import { useAuth } from '../context/AuthContext';
 
-const ADMIN_SECRET = 'gemportalassist2026';
 const CATEGORIES = ['Product News', 'GeM Updates', 'Tips & Tricks', 'Policy Changes', 'General'];
 
 interface BlogPost {
@@ -12,12 +13,15 @@ interface BlogPost {
   content: string;
   cover_image_url: string;
   category: string;
+  author: string;
   published: boolean;
   published_at: string | null;
+  user_id: string;
   created_at: string;
+  updated_at: string;
 }
 
-type FormState = Omit<BlogPost, 'id' | 'created_at' | 'published_at'> & { published: boolean };
+type FormState = Omit<BlogPost, 'id' | 'user_id' | 'created_at' | 'updated_at' | 'published_at'> & { published: boolean };
 
 const emptyForm = (): FormState => ({
   title: '',
@@ -26,6 +30,7 @@ const emptyForm = (): FormState => ({
   content: '',
   cover_image_url: '',
   category: 'General',
+  author: '',
   published: false,
 });
 
@@ -39,29 +44,19 @@ function slugify(text: string) {
     .slice(0, 80);
 }
 
-function apiUrl(path = '') {
-  const base = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/blog-admin`;
-  return path ? `${base}/${path}` : base;
-}
-
-function apiHeaders() {
-  return {
-    'Content-Type': 'application/json',
-    'X-Admin-Secret': ADMIN_SECRET,
-    Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-  };
-}
-
-type Toast = { type: 'success' | 'error'; message: string };
-
 function uploadUrl() {
   return `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/blog-upload`;
 }
 
+type Toast = { type: 'success' | 'error'; message: string };
+
 export default function BlogAdminPage() {
-  const [authed, setAuthed] = useState(false);
+  const { user, signIn, signOut, loading: authLoading } = useAuth();
+
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const [loginError, setLoginError] = useState('');
+  const [loggingIn, setLoggingIn] = useState(false);
 
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(false);
@@ -75,8 +70,8 @@ export default function BlogAdminPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (authed) fetchPosts();
-  }, [authed]);
+    if (user) fetchPosts();
+  }, [user]);
 
   useEffect(() => {
     if (toast) {
@@ -92,9 +87,12 @@ export default function BlogAdminPage() {
   async function fetchPosts() {
     setLoading(true);
     try {
-      const res = await fetch(apiUrl(), { headers: apiHeaders() });
-      const data = await res.json();
-      setPosts(Array.isArray(data) ? data : []);
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .order('created_at', { ascending: false });
+      if (error) throw error;
+      setPosts((data as BlogPost[]) ?? []);
     } catch {
       showToast('error', 'Failed to load posts');
     } finally {
@@ -102,18 +100,23 @@ export default function BlogAdminPage() {
     }
   }
 
-  function handleLogin(e: React.FormEvent) {
+  async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
-    if (password === ADMIN_SECRET) {
-      setAuthed(true);
-      setPasswordError('');
+    setLoginError('');
+    setLoggingIn(true);
+    const { error } = await signIn(email, password);
+    if (error) {
+      setLoginError(error);
+      setLoggingIn(false);
     } else {
-      setPasswordError('Incorrect password. Try again.');
+      setEmail('');
+      setPassword('');
+      setLoggingIn(false);
     }
   }
 
   function startCreate() {
-    setForm(emptyForm());
+    setForm({ ...emptyForm(), author: user?.email ?? '' });
     setCreating(true);
     setEditing(null);
   }
@@ -126,6 +129,7 @@ export default function BlogAdminPage() {
       content: post.content,
       cover_image_url: post.cover_image_url,
       category: post.category,
+      author: post.author,
       published: post.published,
     });
     setEditing(post);
@@ -153,13 +157,16 @@ export default function BlogAdminPage() {
     if (!file) return;
     setUploading(true);
     try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+      if (!token) throw new Error('Not authenticated');
+
       const fd = new FormData();
       fd.append('file', file);
       const res = await fetch(uploadUrl(), {
         method: 'POST',
         headers: {
-          'X-Admin-Secret': ADMIN_SECRET,
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          Authorization: `Bearer ${token}`,
         },
         body: fd,
       });
@@ -182,27 +189,28 @@ export default function BlogAdminPage() {
     }
     setSaving(true);
     try {
+      const slug = form.slug.trim() || slugify(form.title);
+      const payload = { ...form, slug };
+
       if (editing) {
-        const res = await fetch(apiUrl(editing.id), {
-          method: 'PUT',
-          headers: apiHeaders(),
-          body: JSON.stringify(form),
-        });
-        if (!res.ok) throw new Error('Update failed');
+        const { error } = await supabase
+          .from('blog_posts')
+          .update(payload)
+          .eq('id', editing.id);
+        if (error) throw error;
         showToast('success', 'Post updated!');
       } else {
-        const res = await fetch(apiUrl(), {
-          method: 'POST',
-          headers: apiHeaders(),
-          body: JSON.stringify(form),
-        });
-        if (!res.ok) throw new Error('Create failed');
+        const { error } = await supabase
+          .from('blog_posts')
+          .insert(payload);
+        if (error) throw error;
         showToast('success', 'Post created!');
       }
       cancelForm();
       await fetchPosts();
-    } catch {
-      showToast('error', 'Failed to save. Please try again.');
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Failed to save';
+      showToast('error', msg);
     } finally {
       setSaving(false);
     }
@@ -210,12 +218,14 @@ export default function BlogAdminPage() {
 
   async function togglePublish(post: BlogPost) {
     try {
-      const res = await fetch(apiUrl(post.id), {
-        method: 'PUT',
-        headers: apiHeaders(),
-        body: JSON.stringify({ published: !post.published }),
-      });
-      if (!res.ok) throw new Error();
+      const { error } = await supabase
+        .from('blog_posts')
+        .update({
+          published: !post.published,
+          published_at: !post.published ? new Date().toISOString() : post.published_at,
+        })
+        .eq('id', post.id);
+      if (error) throw error;
       showToast('success', post.published ? 'Post unpublished.' : 'Post published!');
       await fetchPosts();
     } catch {
@@ -224,13 +234,14 @@ export default function BlogAdminPage() {
   }
 
   async function deletePost(post: BlogPost) {
+    if (!confirm('Are you sure you want to delete this post?')) return;
     setDeletingId(post.id);
     try {
-      const res = await fetch(apiUrl(post.id), {
-        method: 'DELETE',
-        headers: apiHeaders(),
-      });
-      if (!res.ok) throw new Error();
+      const { error } = await supabase
+        .from('blog_posts')
+        .delete()
+        .eq('id', post.id);
+      if (error) throw error;
       showToast('success', 'Post deleted.');
       await fetchPosts();
     } catch {
@@ -240,7 +251,16 @@ export default function BlogAdminPage() {
     }
   }
 
-  if (!authed) {
+  // --- LOGIN SCREEN ---
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="w-6 h-6 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (!user) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-950 to-blue-800 flex items-center justify-center px-4 pt-16">
         <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-sm">
@@ -253,24 +273,37 @@ export default function BlogAdminPage() {
           </div>
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="text-sm font-semibold text-gray-700 block mb-1">Admin Password</label>
+              <label className="text-sm font-semibold text-gray-700 block mb-1">Email</label>
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="employee@gemportalassist.in"
+                autoFocus
+              />
+            </div>
+            <div>
+              <label className="text-sm font-semibold text-gray-700 block mb-1">Password</label>
               <input
                 type="password"
+                required
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter password"
-                autoFocus
               />
-              {passwordError && (
-                <p className="text-red-500 text-xs mt-1">{passwordError}</p>
-              )}
             </div>
+            {loginError && (
+              <p className="text-red-500 text-xs">{loginError}</p>
+            )}
             <button
               type="submit"
-              className="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-2.5 rounded-xl transition-colors"
+              disabled={loggingIn}
+              className="w-full bg-blue-700 hover:bg-blue-800 disabled:opacity-60 text-white font-bold py-2.5 rounded-xl transition-colors"
             >
-              Sign In
+              {loggingIn ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
         </div>
@@ -278,6 +311,7 @@ export default function BlogAdminPage() {
     );
   }
 
+  // --- ADMIN DASHBOARD ---
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
       {/* Toast */}
@@ -295,7 +329,9 @@ export default function BlogAdminPage() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-2xl font-black text-gray-900">Blog Admin</h1>
-            <p className="text-sm text-gray-500 mt-0.5">{posts.length} total posts</p>
+            <p className="text-sm text-gray-500 mt-0.5">
+              {posts.length} total posts · Signed in as {user.email}
+            </p>
           </div>
           <div className="flex items-center gap-3">
             <button
@@ -305,7 +341,7 @@ export default function BlogAdminPage() {
               <Plus size={16} /> New Post
             </button>
             <button
-              onClick={() => setAuthed(false)}
+              onClick={() => signOut()}
               className="flex items-center gap-2 text-gray-500 hover:text-gray-700 text-sm font-medium border border-gray-200 px-3 py-2 rounded-xl transition-colors"
             >
               <LogOut size={15} /> Sign Out
@@ -352,6 +388,16 @@ export default function BlogAdminPage() {
                 >
                   {CATEGORIES.map(c => <option key={c}>{c}</option>)}
                 </select>
+              </div>
+              <div className="md:col-span-2">
+                <label className="text-xs font-bold text-gray-600 uppercase tracking-wide block mb-1">Author Name</label>
+                <input
+                  type="text"
+                  value={form.author}
+                  onChange={e => updateField('author', e.target.value)}
+                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Author name shown on the post"
+                />
               </div>
               <div className="md:col-span-2">
                 <label className="text-xs font-bold text-gray-600 uppercase tracking-wide block mb-1">Cover Image</label>

@@ -72,6 +72,13 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
           <a
+            href="/blog-admin"
+            onClick={(e) => { e.preventDefault(); window.location.href = '/blog-admin'; }}
+            className="text-xs font-medium text-gray-400 hover:text-blue-700 transition-colors"
+          >
+            Admin
+          </a>
+          <a
             href="/contact"
             onClick={(e) => handleNav(e, 'contact')}
             className="bg-amber-500 hover:bg-amber-600 text-white rounded-lg transition-all duration-200 shadow-sm hover:shadow-md px-4 py-1.5 text-left"

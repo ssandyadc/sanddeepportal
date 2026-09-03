@@ -4,10 +4,8 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Client-Info, Apikey, X-Admin-Secret",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Client-Info, Apikey",
 };
-
-const ADMIN_SECRET = Deno.env.get("BLOG_ADMIN_SECRET") ?? "gemportalassist2026";
 
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
@@ -15,8 +13,8 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const adminSecret = req.headers.get("X-Admin-Secret");
-    if (adminSecret !== ADMIN_SECRET) {
+    const authHeader = req.headers.get("Authorization");
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return new Response(JSON.stringify({ error: "Unauthorized" }), {
         status: 401,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -24,6 +22,22 @@ Deno.serve(async (req: Request) => {
     }
 
     const supabase = createClient(
+      Deno.env.get("SUPABASE_URL")!,
+      Deno.env.get("SUPABASE_ANON_KEY")!,
+      {
+        global: { headers: { Authorization: authHeader } },
+      }
+    );
+
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const serviceClient = createClient(
       Deno.env.get("SUPABASE_URL")!,
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
     );
@@ -41,13 +55,13 @@ Deno.serve(async (req: Request) => {
     const fileName = `${crypto.randomUUID()}.${ext}`;
     const arrayBuffer = await file.arrayBuffer();
 
-    const { error } = await supabase.storage
+    const { error } = await serviceClient.storage
       .from("blog-images")
       .upload(fileName, arrayBuffer, { contentType: file.type, upsert: false });
 
     if (error) throw error;
 
-    const { data: urlData } = supabase.storage
+    const { data: urlData } = serviceClient.storage
       .from("blog-images")
       .getPublicUrl(fileName);
 

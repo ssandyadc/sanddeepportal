@@ -4,10 +4,8 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Client-Info, Apikey, X-Admin-Secret",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Client-Info, Apikey",
 };
-
-const ADMIN_SECRET = Deno.env.get("BLOG_ADMIN_SECRET") ?? "gemportalassist2026";
 
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
@@ -15,8 +13,8 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const adminSecret = req.headers.get("X-Admin-Secret");
-    if (adminSecret !== ADMIN_SECRET) {
+    const authHeader = req.headers.get("Authorization");
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return new Response(JSON.stringify({ error: "Unauthorized" }), {
         status: 401,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -25,12 +23,22 @@ Deno.serve(async (req: Request) => {
 
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+      Deno.env.get("SUPABASE_ANON_KEY")!,
+      {
+        global: { headers: { Authorization: authHeader } },
+      }
     );
+
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
 
     const url = new URL(req.url);
     const pathParts = url.pathname.split("/").filter(Boolean);
-    // /blog-admin  or  /blog-admin/{id}
     const postId = pathParts[pathParts.length - 1] !== "blog-admin" ? pathParts[pathParts.length - 1] : null;
 
     if (req.method === "GET") {
@@ -49,7 +57,7 @@ Deno.serve(async (req: Request) => {
       const slug = body.slug || slugify(body.title);
       const { data, error } = await supabase
         .from("blog_posts")
-        .insert({ ...body, slug })
+        .insert({ ...body, slug, user_id: user.id })
         .select()
         .single();
       if (error) throw error;

@@ -1,0 +1,5 @@
+[functions.blog-admin]
+verify_jwt = true
+
+[functions.blog-upload]
+verify_jwt = true

@@ -26,3 +26,14 @@ export interface BlogPost {
 }
 
 export type BlogPostInput = Omit<BlogPost, 'id' | 'user_id' | 'created_at' | 'updated_at'>
+
+export async function submitLead(data: {
+  name: string;
+  phone: string;
+  email?: string;
+  business_type?: string;
+  message?: string;
+  source?: string;
+}) {
+  return supabase.from('leads').insert(data);
+}

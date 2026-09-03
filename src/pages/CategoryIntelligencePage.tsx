@@ -79,6 +79,7 @@ export default function CategoryIntelligencePage({ onNavigate }: CategoryIntelli
     onNavigate(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+  void handleNav;
 
   const SAMPLE_URL = 'https://superprofile.bio/lf/6a08ca867c5fcd001369734b';
 
